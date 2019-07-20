@@ -1,0 +1,23 @@
+<h2>SHOW <%= resource_name.to_s.humanize %></h2>
+
+  <%= @user.email if user_signed_in? %>
+
+  <br>
+
+  <%= @user.encrypted_password %>
+
+  <br>
+
+  <%= @user.reset_password_token %>
+
+  <br>
+
+  <%= @user.reset_password_sent_at %>
+
+  <br>
+
+  <%= @user.remember_created_at %>
+
+  <br>
+
+<%= link_to "Back", :back %>
