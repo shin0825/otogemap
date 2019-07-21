@@ -1,6 +1,8 @@
-<h2>SHOW <%= resource_name.to_s.humanize %></h2>
+<%= provide(:title, "ログインユーザー確認") %>
 
-  <%= @user.email if user_signed_in? %>
+<h2>SHOW <%= resource_name.to_s.humanize %></h2>
+<% if user_signed_in? %>
+  <%= @user.email %>
 
   <br>
 
@@ -17,7 +19,14 @@
   <br>
 
   <%= @user.remember_created_at %>
+  <%= link_to 'ログアウト', logout_path %>
+
+<% else %>
+
+  さてはアンチだなおめー
 
   <br>
 
-<%= link_to "Back", :back %>
+<% end %>
+
+<%= link_to "Back", static_pages_home_path %>

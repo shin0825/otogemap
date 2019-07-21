@@ -40,6 +40,8 @@ gem 'rails-i18n'
 gem 'toastr-rails'
 
 gem 'devise'
+gem 'devise-i18n'
+gem 'devise-i18n-views'
 
 group :development, :test do
   # Use sqlite3 as the database for Active Record
