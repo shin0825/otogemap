@@ -1,0 +1,6 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+aichi:
+  id: 23
+  name: 愛知県
+  name_kana: アイチケン

@@ -1,7 +1,15 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+# Prefecture
+# Prefecture.create(:id => 21, :name => "岐阜県", :name_kana => "ギフケン")
+# Prefecture.create(:id => 22, :name => "静岡県", :name_kana => "シズオカケン")
+# Prefecture.create(:id => 23, :name => "愛知県", :name_kana => "アイチケン")
+# Prefecture.create(:id => 24, :name => "三重県", :name_kana => "ミエケン")
+
+# AmusementArcade
+# AmusementArcade.create(
+#   :name => "わたしのゲームセンター",
+#   :name_kana => "ワタシノゲームセンター",
+#   :prefecture_id => 23,
+#   :address => "愛知県名古屋市中川区",
+#   :latitude => 35.1405944,
+#   :longitude => 136.8534181,
+# )
