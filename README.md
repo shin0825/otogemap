@@ -1,24 +1,59 @@
-# README
+# ざっくりとしたDB設計
+1. ゲーセン
+2. ゲーセンタグ
+ - クローク、ロッカーあり、禁煙、喫煙所あり、喫煙所なし、トイレ綺麗、トイレあり、トイレなし、駅近い、駐車場広い
+3. 1.2.中間
+4. IIDX（内部特徴）
+ - 液晶ver、筐体ver、バネ（なし~20~60~100）、バネカットの有無、バネ伸ばしの有無、スイッチ(0.10N~0.49N~0.98N)、スタダパセリ
+5. IIDXタグ（外的特徴）
+ - 扇風機、充電器、荷物置き、待ち椅子
+6. 4.5.中間
+7. チュウニズム
+8. チュウニズムタグ
+9. 7.8.中間
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# 画面遷移
+0. 共通部
+  - ログインフォーム
+  - ログインユーザー
 
-Things you may want to cover:
+1. index
+- ゲーセンの一覧
+- 検索条件
+  - 「都道府県」マスタ
+  - 「ゲーセン用ハッシュタグ」テーブル
+    - [ #hoge ]4　[ #fuga ]2 みたいに表示する
+      - クリックで検索
+    - ハッシュタグはユーザには追加できないようにする
+  - [ 保有筐体タイプ ]
+- [ IIDX検索 ] [ チュウニズム検索 ] リンク
 
-* Ruby version
+2. ゲーセンSEARCH
+- 検索条件
+- 検索結果を表示
 
-* System dependencies
+3. ゲーセンSHOW
+  - 筐体一覧が出てくる
+    - チュウニズム n台 [ 追加 ] のバー
+    - 詳細情報stack 左：ナンバリング、右：詳細情報
 
-* Configuration
+4. IIDX NEW / EDIT
+- ゲーセンSHOWから追加する、直接指定することもできる
+  - ゲーセンSHOWから遷移：ゲーセンidが固定
+  - IIDX NEW / EDIT を直接指定：ゲーセンidを指定（9999:設置先なしも選択可能）
 
-* Database creation
+5. IIDXSEARCH
+- 検索条件
+ - ゲーセンに紐づく都道府県
+ - 内部特徴
+ - 外部特徴
+- 検索結果を表示
+  - 筐体一覧が出てくる
+    - 表示的にはゲーセン一覧が出てくる感じ　ゲーセンが重複してるみたいな・・・
+  - クリックすると店舗に移動
 
-* Database initialization
+6. チュウニズムNEW / EDIT
+- 4.とだいたい同じview
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+7. チュウニズムSEARCH
+- 5.とだいたい同じview
