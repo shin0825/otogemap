@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190722144305) do
+ActiveRecord::Schema.define(version: 20190726112206) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,19 @@ ActiveRecord::Schema.define(version: 20190722144305) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["prefecture_id"], name: "index_amusement_arcades_on_prefecture_id"
+  end
+
+  create_table "iidxes", force: :cascade do |t|
+    t.text "serial_no"
+    t.float "spring_weight"
+    t.float "switch_weight"
+    t.integer "cash_price"
+    t.integer "paseli_price"
+    t.integer "premium_free_time_from"
+    t.integer "premium_free_time_to"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "paseli_availability"
   end
 
   create_table "prefectures", force: :cascade do |t|
