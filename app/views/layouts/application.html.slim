@@ -1,0 +1,15 @@
+doctype html
+
+html
+  head
+    title = full_title(yield(:title))
+    = csrf_meta_tags
+
+  body
+    if notice
+    p.alert.alert-success = notice
+    end
+    if alert
+    p.alert.alert-danger = alert
+    end
+    = yield
