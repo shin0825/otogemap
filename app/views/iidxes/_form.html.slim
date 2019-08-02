@@ -1,0 +1,14 @@
+= form_with model: @iidx do |f|
+  = render 'shared/error_messages', object: f.object
+  br
+  = f.label :name, '筐体名'
+  = f.text_field :name
+  br
+  = f.label :cash_price, '1クレジット料金(現金)'
+  = f.text_field :cash_price
+  br
+  = f.label :paseli_availability, 'パセリ利用可否'
+  = f.check_box :paseli_availability, {:checked => "checked"}
+  | つかえる
+  br
+  = f.submit 'do it do it', class: 'btn'

@@ -1,32 +1,21 @@
-<%= provide(:title, "ログインユーザー確認") %>
+= provide(:title, "ログインユーザー確認")
 
-<h2>SHOW <%= resource_name.to_s.humanize %></h2>
-<% if user_signed_in? %>
-  <%= @user.email %>
+h2 SHOW
+  = resource_name.to_s.humanize
+- if user_signed_in?
+  = @user.email
+  br
+  = @user.encrypted_password
+  br
+  = @user.reset_password_token
+  br
+  = @user.reset_password_sent_at
+  br
+  = @user.remember_created_at
+  = link_to 'ログアウト', logout_path
 
-  <br>
+- else
+  | さてはアンチだなおめー
+  br
 
-  <%= @user.encrypted_password %>
-
-  <br>
-
-  <%= @user.reset_password_token %>
-
-  <br>
-
-  <%= @user.reset_password_sent_at %>
-
-  <br>
-
-  <%= @user.remember_created_at %>
-  <%= link_to 'ログアウト', logout_path %>
-
-<% else %>
-
-  さてはアンチだなおめー
-
-  <br>
-
-<% end %>
-
-<%= link_to "Back", static_pages_home_path %>
+= link_to "Back", static_pages_home_path

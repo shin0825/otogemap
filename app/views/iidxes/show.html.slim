@@ -1,0 +1,29 @@
+- provide(:ttl, 'IIDX 筐体情報')
+
+h2
+  | IIDX 筐体情報：
+  = @iidx.name
+
+  p
+    | シリアル
+    - unless @iidx.serial_no.blank?
+      = @iidx.serial_no
+    - else
+      | はねぇよ
+
+  p
+    | 1クレジット料金(現金)
+    | \
+    = @iidx.cash_price
+    | -
+
+  p
+    | パセリ使用可否
+    - if @iidx.paseli_availability
+      | 使えますよ
+    - else
+      | ダメでーす
+
+= link_to 'hoge', edit_iidx_path(@iidx)
+br
+= link_to 'kesu', iidx_path(@iidx), method: :delete, data: { confirm: 'Are you sure??' }
