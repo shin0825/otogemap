@@ -4,12 +4,14 @@ html
   head
     title = full_title(yield(:title))
     = csrf_meta_tags
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 
   body
-    if notice
+    - if notice
     p.alert.alert-success = notice
-    end
-    if alert
+
+    - if alert
     p.alert.alert-danger = alert
-    end
+
     = yield
