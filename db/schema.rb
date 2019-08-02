@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190726112206) do
+ActiveRecord::Schema.define(version: 20190726034740) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20190726112206) do
   end
 
   create_table "iidxes", force: :cascade do |t|
+    t.string "name"
     t.text "serial_no"
     t.float "spring_weight"
     t.float "switch_weight"
@@ -35,9 +36,9 @@ ActiveRecord::Schema.define(version: 20190726112206) do
     t.integer "paseli_price"
     t.integer "premium_free_time_from"
     t.integer "premium_free_time_to"
+    t.boolean "paseli_availability"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "paseli_availability"
   end
 
   create_table "prefectures", force: :cascade do |t|
