@@ -47,6 +47,10 @@ gem 'devise-i18n-views'
 
 gem 'slim-rails', '~> 3.2'
 
+gem 'gmaps4rails'
+gem 'http'
+gem 'dotenv-rails'
+
 group :development, :test do
   # Use sqlite3 as the database for Active Record
   # gem 'sqlite3'
