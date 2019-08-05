@@ -1,0 +1,32 @@
+sass:
+  map
+    height: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+    width: 80%;
+
+- provide(:ttl, 'ゲーセン情報')
+
+p
+  = @arcade.prefecture.name
+
+h2
+  = @arcade.name
+
+h4
+  = @arcade.name_kana
+
+h5
+  = @arcade.address
+
+#map style="width: 800px; height: 400px;"
+
+javascript:
+  handler = Gmaps.build('Google');
+  handler.buildMap({provider: {}, internal: {id: 'map'}}, function(){
+    markers = handler.addMarkers(#{raw @hash.to_json});
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+    handler.getMap().setZoom(17);
+  });
