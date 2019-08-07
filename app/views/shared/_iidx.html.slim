@@ -1,0 +1,19 @@
+= link_to(iidx) do
+  header
+    = iidx.name
+  ul
+    li
+      | \
+      = iidx.cash_price
+    - if iidx.paseli_availability
+      li
+        | PASELI使用可
+    - if iidx.paseli_availability
+      li
+        | PF&nbsp;
+        - unless iidx.premium_free_time_to.nil? && iidx.premium_free_time_from.nil?
+          = iidx.premium_free_time_from
+          | ~
+          = iidx.premium_free_time_to
+        - else
+          | なし
