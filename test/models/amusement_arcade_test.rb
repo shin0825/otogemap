@@ -17,7 +17,7 @@ class AmusementArcadeTest < ActiveSupport::TestCase
   end
 
   test "prefecture id should be present" do
-    @amusement_arcade.prefecture_id = nil
+    @amusement_arcade.address = nil
     assert_not @amusement_arcade.valid?
   end
 end
