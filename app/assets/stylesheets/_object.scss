@@ -1,0 +1,124 @@
+@mixin text-color($color: #000) {
+  color: $color;
+}
+
+@mixin link-color($color: #000) {
+  color: $color;
+  text-decoration: none;
+
+  &:hover {
+    color: lighten($color, 15%);
+    text-decoration: underline;
+  }
+
+  &:visited {
+    color: desaturate($color, 50%);
+  }
+}
+
+a {
+  @include link-color(#333);
+}
+
+header {
+  background-color: #f1f1f1;
+  color: #3C2F41;
+  font-size: 1.5rem;
+  text-align: left;
+  padding: .5rem .5rem .5rem 1.5rem;
+}
+
+.content {
+  background-color: #3C2F41;
+  color: #f1f1f1;
+}
+
+.context {
+  position: relative;
+  max-width: 1200px;
+  margin: auto;
+  padding: 1.5rem;
+  width: 95%;
+}
+
+
+.title {
+  font-size: 2.5rem;
+  line-height: 5rem;
+}
+
+.machine {
+  font-size: 2rem;
+  margin-top: 1rem;
+  padding: 1rem;
+}
+
+.machineBox {
+  background: #fff;
+  border-radius: .5rem;
+  margin-top: 1rem;
+  width: 100%;
+  @include text-color(#3C2F41);
+
+  .box-title {
+    background-color: #B481BB;
+    border-radius: .5rem 0 0 .5rem;
+    font-size: 1.0rem;
+    padding: 1.2rem;
+    text-align: center;
+    width: 25vw;
+  }
+
+  .box-contexts {
+    margin: auto;
+    width: 100%;
+  }
+
+  .box-context {
+    display: flex;
+    width: 100%;
+  }
+
+  .box-context-title-top {
+    background-color: #77428D;
+    color: #f1f1f1;
+    padding: 1.2rem;
+    text-align: center;
+    width: 30%;
+  }
+
+  .box-context-title {
+    background-color: #77428D;
+    border-top: 1px solid #B481BB;
+    color: #f1f1f1;
+    padding: 1.2rem;
+    text-align: center;
+    width: 30%;
+  }
+
+  .box-context-body-top {
+    font-size: 1rem;
+    padding: 1.2rem;
+    width: 70%;
+  }
+
+  .box-context-body {
+    border-top: 1px solid #B481BB;
+    font-size: .9rem;
+    padding: 1.2rem;
+    width: 70%;
+  }
+}
+
+#map {
+  height: 250px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+  width: 100%;
+
+  .map {
+    width: 360px;
+    height: 240px;
+  }
+}

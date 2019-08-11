@@ -1,19 +1,29 @@
 = link_to(iidx) do
-  header
-    = iidx.name
-  ul
-    li
-      | \
-      = iidx.cash_price
-    - if iidx.paseli_availability
-      li
-        | PASELI使用可
-    - if iidx.paseli_availability
-      li
-        | PF&nbsp;
-        - unless iidx.premium_free_time_to.nil? && iidx.premium_free_time_from.nil?
-          = iidx.premium_free_time_from
-          | ~
-          = iidx.premium_free_time_to
-        - else
-          | なし
+  .machineBox.l-justify-left
+    .box-title
+      = iidx.name
+    .box-contexts
+      |
+      .box-context
+        .box-context-title-top
+          | 料金
+        .box-context-body-top
+          | \
+          = iidx.cash_price
+      - if iidx.paseli_availability
+        .box-context
+          .box-context-title
+            | PASELI
+          .box-context-body
+            | 使用可
+      - if iidx.paseli_availability
+        .box-context
+          .box-context-title
+            | PF
+          .box-context-body
+            - unless iidx.premium_free_time_to.nil? && iidx.premium_free_time_from.nil?
+              = iidx.premium_free_time_from
+              | ~
+              = iidx.premium_free_time_to
+            - else
+              | なし

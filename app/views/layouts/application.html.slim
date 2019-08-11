@@ -4,6 +4,7 @@ html
   head
     title = full_title(yield(:title))
     = csrf_meta_tags
+    meta name="viewport" content="width=device-width, initial-scale=1.0"
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     script src="//maps.google.com/maps/api/js?key=#{ENV['GCP_API_KEY']}"
@@ -11,10 +12,17 @@ html
     script src='//cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/infobox/src/infobox_packed.js' type='text/javascript'
 
   body
-    - if notice
-    p.alert.alert-success = notice
+    header
+      = icon 'fas', 'compact-disc'
+      | IIDXマップ
 
-    - if alert
-    p.alert.alert-danger = alert
+    main.content
+      section
+        .context
+          - if notice
+          p.alert.alert-success = notice
 
-    = yield
+          - if alert
+          p.alert.alert-danger = alert
+
+          = yield

@@ -1,17 +1,11 @@
-sass:
-  map
-    height: 250px;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: left;
-    width: 80%;
-
 - provide(:ttl, 'ゲーセン情報')
 
-p
+p.pref
+  = icon 'fas', 'map-marker-alt'
+  | &nbsp;
   = @arcade.prefecture.name
 
-h2
+h1.title
   = @arcade.name
 
 h4
@@ -20,10 +14,12 @@ h4
 h5
   = @arcade.address
 
-#map style="width: 800px; height: 250px;"
+#map.map
 
-.hogehoge
-  = render partial: 'shared/iidx', collection: @iidx
+h1.machine
+  = icon 'fas', 'compact-disc'
+  | beatmania IIDX
+= render partial: 'shared/iidx', collection: @iidx
 
 javascript:
   handler = Gmaps.build('Google');
