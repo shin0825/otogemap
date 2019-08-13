@@ -12,7 +12,7 @@ class IidxesController < ApplicationController
   def create
     @iidx = Iidx.new(iidx_params)
     if @iidx.save
-      redirect_to @iidx, notice: 'yattaze!!'
+      redirect_to @iidx.amusement_arcade, notice: 'created!!'
     else
       render :new
     end
@@ -20,15 +20,16 @@ class IidxesController < ApplicationController
 
   def update
     if @iidx.update(iidx_params)
-      redirect_to @iidx, notice: 'greatness!!'
+      redirect_to @iidx.amusement_arcade, notice: 'updated!!'
     else
       render :edit
     end
   end
 
   def destroy
+    arcade_id = @iidx.amusement_arcade.id
     @iidx.destroy
-    redirect_to iidxes_path, notice: 'IIDX筐体方法を削除しました'
+    redirect_to amusement_arcade_path(arcade_id), notice: 'IIDX筐体方法を削除しました'
   end
 
   private
@@ -46,7 +47,8 @@ class IidxesController < ApplicationController
         :paseli_price,
         :premium_free_time_from,
         :premium_free_time_to,
-        :paseli_availability
+        :paseli_availability,
+        :amusement_arcade_id
       )
     end
 end

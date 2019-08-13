@@ -1,6 +1,10 @@
 class AmusementArcadesController < ApplicationController
   before_action :finding_arcade, only: %i(edit update destroy)
 
+  def index
+    @arcade = AmusementArcade.all
+  end
+
   def new
     @arcade = AmusementArcade.new()
   end

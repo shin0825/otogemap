@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'static_pages/home'
+  root to: 'amusement_arcades#index'
 
   devise_for :users, :controllers => {
     :registrations => 'users/registrations',

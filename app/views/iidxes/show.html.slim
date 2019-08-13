@@ -1,29 +1,30 @@
 - provide(:ttl, 'IIDX 筐体情報')
 
-h2
-  | IIDX 筐体情報：
-  = @iidx.name
-
+#title.l-justify-left
+  h1.title
+    | IIDX 筐体情報：
+    = @iidx.name
   p
-    | シリアル
-    - unless @iidx.serial_no.blank?
-      = @iidx.serial_no
-    - else
-      | はねぇよ
-
+    = link_to '編集', edit_iidx_path(@iidx)
   p
-    | 1クレジット料金(現金)
-    | \
-    = @iidx.cash_price
-    | -
+    = link_to '削除', iidx_path(@iidx), method: :delete, data: { confirm: '削除してよろしいですか？' }
 
-  p
-    | パセリ使用可否
-    - if @iidx.paseli_availability
-      | 使えますよ
-    - else
-      | ダメでーす
+p
+  | シリアル
+  - unless @iidx.serial_no.blank?
+    = @iidx.serial_no
+  - else
+    | 未記載
 
-= link_to 'hoge', edit_iidx_path(@iidx)
-br
-= link_to 'kesu', iidx_path(@iidx), method: :delete, data: { confirm: 'Are you sure??' }
+p
+  | 1クレジット料金(現金)
+  | \
+  = @iidx.cash_price
+  | -
+
+p
+  | パセリ使用可否
+  - if @iidx.paseli_availability
+    | 使用可
+  - else
+    | 使用不可

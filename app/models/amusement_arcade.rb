@@ -1,6 +1,6 @@
 class AmusementArcade < ApplicationRecord
   belongs_to :prefecture
-  has_many :iidx
+  has_many :iidx, :dependent => :nullify
 
   before_validation :set_prefecture
   validates :prefecture_id, presence: true

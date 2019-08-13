@@ -1,0 +1,9 @@
+- provide(:ttl, 'ゲーセン情報')
+
+#title.l-justify-left
+  h1.title
+    | ゲームセンター 一覧
+  p
+    = link_to '追加', new_amusement_arcade_path(@arcade)
+
+= render partial: 'shared/arcade', collection: @arcade

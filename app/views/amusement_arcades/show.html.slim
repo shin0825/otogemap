@@ -5,8 +5,13 @@ p.pref
   | &nbsp;
   = @arcade.prefecture.name
 
-h1.title
-  = @arcade.name
+#title.l-justify-left
+  h1.title
+    = @arcade.name
+  p
+    = link_to '編集', edit_amusement_arcade_path(@arcade)
+  p
+    = link_to '削除', amusement_arcade_path(@arcade), method: :delete, data: { confirm: '削除してよろしいですか？' }
 
 h4
   = @arcade.name_kana
@@ -16,9 +21,13 @@ h5
 
 #map.map
 
-h1.machine
-  = icon 'fas', 'compact-disc'
-  | beatmania IIDX
+#machine.l-justify-left
+  h1.machine
+    = icon 'fas', 'compact-disc'
+    | beatmania IIDX
+  p
+    = link_to '追加', new_iidx_path(@arcade)
+
 = render partial: 'shared/iidx', collection: @iidx
 
 javascript:

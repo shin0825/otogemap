@@ -1,6 +1,9 @@
 = form_with model: @iidx do |f|
   = render 'shared/error_messages', object: f.object
   br
+  = f.label :amusement_arcade_id, 'ゲーセン'
+  = f.collection_select :amusement_arcade_id, AmusementArcade.all.order(id: :asc), :id, :name
+  br
   = f.label :name, '筐体名'
   = f.text_field :name
   br
@@ -8,7 +11,7 @@
   = f.text_field :cash_price
   br
   = f.label :paseli_availability, 'パセリ利用可否'
-  = f.check_box :paseli_availability, {:checked => "checked"}
-  | つかえる
+  = f.check_box :paseli_availability
+  | 使用可能
   br
-  = f.submit 'do it do it', class: 'btn'
+  = f.submit '保存', class: 'btn'
