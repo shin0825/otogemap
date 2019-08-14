@@ -1,11 +1,14 @@
 class IidxesController < ApplicationController
+  before_action :authenticate_user!, only: %i(new create edit update destroy)
   before_action :finding_iidx, only: %i(show edit update destroy)
 
   def new
     @iidx = Iidx.new()
   end
 
-  def show; end
+  def show
+    @arcade = AmusementArcade.find(@iidx.amusement_arcade_id)
+  end
 
   def edit; end
 

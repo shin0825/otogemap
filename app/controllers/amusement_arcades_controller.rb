@@ -1,4 +1,5 @@
 class AmusementArcadesController < ApplicationController
+  before_action :authenticate_user!, only: %i(new create edit update destroy)
   before_action :finding_arcade, only: %i(edit update destroy)
 
   def index
