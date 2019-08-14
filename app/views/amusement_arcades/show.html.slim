@@ -1,18 +1,23 @@
 - provide(:ttl, 'ゲーセン情報')
 
+- if user_signed_in?
+  #buttons.l-justify-column
+    .l-justify-right.u-width100percent
+      = link_to(amusement_arcade_path(@arcade), method: :delete, data: { confirm: '削除してよろしいですか？' })
+        p.buttonlabel
+          | 削除
+      = link_to(edit_amusement_arcade_path(@arcade))
+        p.buttonlabel
+          | 編集
+
 p.pref
   = icon 'fas', 'map-marker-alt'
   | &nbsp;
   = @arcade.prefecture.name
 
-#title.l-justify-left
+#title.l-justify-column
   h1.title
     = @arcade.name
-  p
-    = link_to '編集', edit_amusement_arcade_path(@arcade)
-  p
-    = link_to '削除', amusement_arcade_path(@arcade), method: :delete, data: { confirm: '削除してよろしいですか？' }
-
 h4
   = @arcade.name_kana
 
@@ -21,14 +26,19 @@ h5
 
 #map.map
 
-#machine.l-justify-left
+#machine.l-justify-column
   h1.machine
     = icon 'fas', 'compact-disc'
     | beatmania IIDX
-  p
-    = link_to '追加', new_iidx_path(@arcade)
 
 = render partial: 'shared/iidx', collection: @iidx
+
+- if user_signed_in?
+  #buttons.l-justify-column
+    .l-justify-right.u-width100percent
+      = link_to(new_iidx_path(@arcade))
+        p.buttonlabel
+          | 追加
 
 javascript:
   handler = Gmaps.build('Google');

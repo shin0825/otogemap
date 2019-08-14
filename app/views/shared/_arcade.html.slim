@@ -1,7 +1,11 @@
 = link_to(arcade) do
-  .machineBox.l-justify-left
+  .contentBox.l-direction-column
     .box-title
       = arcade.name
-    .box-contexts
-      .box-context-body-top
-        = arcade.address
+    .box-contexts.l-direction-column
+      |
+      .box-context
+        .box-context-title-top
+          | 所在地
+        .box-context-body-top
+          = arcade.address

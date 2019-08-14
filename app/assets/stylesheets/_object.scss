@@ -39,18 +39,28 @@ header {
   }
 }
 
+#buttons {
+  margin-bottom: 1rem;
+
+  a {
+    width: 12rem;
+    margin: auto 1 auto 0;
+    padding: 1rem .5rem 0 .5rem;
+
+    .buttonlabel {
+      border-radius: .5rem .5rem .5rem .5rem;
+      background-color: #FFF;
+      padding: .5rem 1rem .5rem 1rem;
+      text-align: center;
+    }
+  }
+}
+
 #title {
   .title {
     margin-right: 1rem;
     font-size: 2.5rem;
     line-height: 5rem;
-  }
-
-  p {
-    border-radius: .5rem .5rem .5rem .5rem;
-    background-color: #FFF;
-    margin: auto 1rem auto 1rem;
-    padding: .5rem 1rem .5rem 1rem;
   }
 }
 
@@ -75,29 +85,22 @@ header {
     margin-right: 1rem;
     padding: 1rem;
   }
-
-  p {
-    border-radius: .5rem .5rem .5rem .5rem;
-    background-color: #FFF;
-    margin: auto 1rem auto 1rem;
-    padding: .5rem 1rem .5rem 1rem;
-  }
 }
 
-.machineBox {
+.contentBox {
   background: #fff;
   border-radius: .5rem;
+  overflow: hidden;
   margin-top: 1rem;
   width: 100%;
   @include text-color(#3C2F41);
 
   .box-title {
     background-color: #B481BB;
-    border-radius: .5rem 0 0 .5rem;
     font-size: 1.0rem;
     padding: 1.2rem;
     text-align: center;
-    width: 25vw;
+    width: 100%;
   }
 
   .box-contexts {

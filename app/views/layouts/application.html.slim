@@ -13,9 +13,16 @@ html
 
   body
     header
-      = link_to(root_path)
-        = icon 'fas', 'compact-disc'
-        | IIDXマップ
+      .u-width100percent.l-flex
+        .l-left style="width: 50%;"
+          = link_to(root_path)
+            = icon 'fas', 'compact-disc'
+            | IIDXマップ
+        .l-right style="width: 50%;"
+          - if current_user.nil?
+            = link_to "ログイン", login_path
+          - else
+            = link_to "ログアウト", logout_path, data: { confirm: 'ログアウトしますか？' }
 
     main.content
       section

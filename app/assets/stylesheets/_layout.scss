@@ -1,7 +1,25 @@
+.l-flex {
+  display: flex;
+}
+.l-right {
+  text-align: right;
+}
+.l-center {
+  text-align: center;
+}
+.l-left {
+  text-align: left;
+}
 .l-justify-left {
   display: flex;
   justify-content: flex-start;
 }
+
+.l-justify-right {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .l-direction-column {
   display: flex;
   flex-direction: column;
