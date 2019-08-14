@@ -1,13 +1,25 @@
 - provide(:ttl, 'IIDX 筐体情報')
 
-#title.l-justify-left
-  h1.title
-    | IIDX 筐体情報：
+- if user_signed_in?
+  #buttons.l-justify-column
+    .l-justify-right.u-width100percent
+      = link_to(iidx_path(@iidx), method: :delete, data: { confirm: '削除してよろしいですか？' })
+        p.buttonlabel
+          | 削除
+      = link_to(edit_iidx_path(@iidx))
+        p.buttonlabel
+          | 編集
+
+#machine.l-justify-column
+  h1.machine
+    = icon 'fas', 'compact-disc'
+    | beatmania IIDX
+    | &nbsp;-&nbsp;
     = @iidx.name
-  p
-    = link_to '編集', edit_iidx_path(@iidx)
-  p
-    = link_to '削除', iidx_path(@iidx), method: :delete, data: { confirm: '削除してよろしいですか？' }
+p
+  | 設置店舗
+= render partial: 'shared/arcade', locals: { arcade: @arcade }
+
 
 p
   | シリアル
