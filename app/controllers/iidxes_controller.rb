@@ -4,6 +4,7 @@ class IidxesController < ApplicationController
 
   def new
     @iidx = Iidx.new()
+    @iidx.amusement_arcade_id = params[:amusement_arcade_id] unless params[:amusement_arcade_id].blank?
   end
 
   def show
@@ -17,7 +18,7 @@ class IidxesController < ApplicationController
     if @iidx.save
       redirect_to @iidx.amusement_arcade, notice: 'created!!'
     else
-      render :new
+      render_ajax_error model: @iidx
     end
   end
 
@@ -25,7 +26,7 @@ class IidxesController < ApplicationController
     if @iidx.update(iidx_params)
       redirect_to @iidx.amusement_arcade, notice: 'updated!!'
     else
-      render :edit
+      render_ajax_error model: @iidx
     end
   end
 

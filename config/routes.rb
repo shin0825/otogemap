@@ -14,5 +14,6 @@ Rails.application.routes.draw do
   end
 
   resources :iidxes
+  get "iidxes/new/:amusement_arcade_id" => "iidxes#new", :as => "new_iidx_with_ac"
   resources :amusement_arcades
 end

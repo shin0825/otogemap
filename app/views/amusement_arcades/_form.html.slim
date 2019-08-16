@@ -1,13 +1,26 @@
 = form_with model: @arcade do |f|
-  = render 'shared/error_messages', object: f.object
+  #error
   br
-  = f.label :name, 'ゲーセン名'
-  = f.text_field :name
-  br
-  = f.label :name_kana, 'ゲーセン名（よみがな）'
-  = f.text_field :name_kana
-  br
-  = f.label :address, '住所'
-  = f.text_field :address
-  br
-  = f.submit '保存', class: 'btn'
+  .contentBox.l-direction-column
+    .box-title
+      | ゲーセン 情報登録
+    .box-contexts.l-direction-column
+      |
+      .box-context
+        .box-context-title
+          = f.label :name, 'ゲーセン名'
+        .box-context-body
+          = f.text_field :name
+      .box-context
+        .box-context-title
+          = f.label :name_kana, 'ゲーセン名（よみがな）'
+        .box-context-body
+          = f.text_field :name_kana
+      .box-context
+        .box-context-title
+          = f.label :address, '住所'
+        .box-context-body
+          = f.text_field :address
+    .box-title
+      #buttons
+        = f.submit '保存', class: 'btn'

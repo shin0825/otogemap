@@ -3,7 +3,7 @@ class AmusementArcadesController < ApplicationController
   before_action :finding_arcade, only: %i(edit update destroy)
 
   def index
-    @arcade = AmusementArcade.all
+    @arcade = AmusementArcade.all.order(:prefecture_id, :address)
   end
 
   def new
@@ -12,7 +12,7 @@ class AmusementArcadesController < ApplicationController
 
   def show
     @arcade = AmusementArcade.includes(:prefecture).find_by(id: params[:id])
-    @iidx = @arcade.iidx
+    @iidx = @arcade.iidx.order(:name)
     @hash = Gmaps4rails.build_markers(@arcade) do |arcade, marker|
       marker.lat arcade.latitude
       marker.lng arcade.longitude
@@ -27,7 +27,7 @@ class AmusementArcadesController < ApplicationController
     if @arcade.save
       redirect_to @arcade, notice: 'created!!'
     else
-      render :new
+      render_ajax_error model: @arcade
     end
   end
 
@@ -35,7 +35,7 @@ class AmusementArcadesController < ApplicationController
     if @arcade.update(arcade_params)
       redirect_to @arcade, notice: 'updated!!'
     else
-      render :edit
+      render_ajax_error model: @arcade
     end
   end
 

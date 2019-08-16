@@ -40,8 +40,6 @@ header {
 }
 
 #buttons {
-  margin-bottom: 1rem;
-
   a {
     width: 12rem;
     margin: auto 1 auto 0;
@@ -54,13 +52,23 @@ header {
       text-align: center;
     }
   }
+
+  .btn {
+    width: 12rem;
+    margin: auto 1 auto 0;
+    padding: 1rem .5rem 0 .5rem;
+    border-radius: .5rem .5rem .5rem .5rem;
+    background-color: #FFF;
+    padding: .5rem 1rem .5rem 1rem;
+    text-align: center;
+  }
 }
 
 #title {
   .title {
+    font-size: 2rem;
     margin-right: 1rem;
-    font-size: 2.5rem;
-    line-height: 5rem;
+    line-height: 3.5rem;
   }
 }
 
@@ -83,7 +91,6 @@ header {
   .machine {
     font-size: 2rem;
     margin-right: 1rem;
-    padding: 1rem;
   }
 }
 
@@ -92,6 +99,7 @@ header {
   border-radius: .5rem;
   overflow: hidden;
   margin-top: 1rem;
+  margin-bottom: 1.5rem;
   width: 100%;
   @include text-color(#3C2F41);
 
@@ -113,34 +121,20 @@ header {
     width: 100%;
   }
 
-  .box-context-title-top {
-    background-color: #77428D;
-    color: #f1f1f1;
-    padding: 1.2rem;
-    text-align: center;
-    width: 30%;
-  }
-
   .box-context-title {
     background-color: #77428D;
     border-top: 1px solid #B481BB;
     color: #f1f1f1;
     padding: 1.2rem;
     text-align: center;
-    width: 30%;
-  }
-
-  .box-context-body-top {
-    font-size: 1rem;
-    padding: 1.2rem;
-    width: 70%;
+    width: 40%;
   }
 
   .box-context-body {
     border-top: 1px solid #B481BB;
     font-size: .9rem;
     padding: 1.2rem;
-    width: 70%;
+    width: 60%;
   }
 }
 

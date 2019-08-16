@@ -3,6 +3,8 @@ class AmusementArcade < ApplicationRecord
   has_many :iidx, :dependent => :nullify
 
   before_validation :set_prefecture
+  validates :name, presence: true
+  validates :name_kana, presence: true
   validates :prefecture_id, presence: true
 
   after_validation :geocode

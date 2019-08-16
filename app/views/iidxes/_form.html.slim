@@ -1,17 +1,32 @@
 = form_with model: @iidx do |f|
-  = render 'shared/error_messages', object: f.object
+  #error
   br
-  = f.label :amusement_arcade_id, 'ゲーセン'
-  = f.collection_select :amusement_arcade_id, AmusementArcade.all.order(id: :asc), :id, :name
-  br
-  = f.label :name, '筐体名'
-  = f.text_field :name
-  br
-  = f.label :cash_price, '1クレジット料金(現金)'
-  = f.text_field :cash_price
-  br
-  = f.label :paseli_availability, 'パセリ利用可否'
-  = f.check_box :paseli_availability
-  | 使用可能
-  br
-  = f.submit '保存', class: 'btn'
+  .contentBox.l-direction-column
+    .box-title
+      | IIDX 情報登録
+    .box-contexts.l-direction-column
+      |
+      .box-context
+        .box-context-title
+          = f.label :amusement_arcade_id, 'ゲーセン'
+        .box-context-body
+          = f.collection_select :amusement_arcade_id, AmusementArcade.all.order(:prefecture_id, :address), :id, :name
+      .box-context
+        .box-context-title
+          = f.label :name, '筐体名'
+        .box-context-body
+          = f.text_field :name
+      .box-context
+        .box-context-title
+          = f.label :cash_price, '1クレジット料金(現金)'
+        .box-context-body
+          = f.text_field :cash_price
+      .box-context
+        .box-context-title
+          = f.label :paseli_availability, 'パセリ利用可否'
+        .box-context-body
+          = f.check_box :paseli_availability
+          | 使用可能
+    .box-title
+      #buttons
+        = f.submit '保存', class: 'btn'

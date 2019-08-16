@@ -1,7 +1,7 @@
 - provide(:ttl, 'ゲーセン情報')
 
 - if user_signed_in?
-  #buttons.l-justify-column
+  #buttons
     .l-justify-right.u-width100percent
       = link_to(amusement_arcade_path(@arcade), method: :delete, data: { confirm: '削除してよろしいですか？' })
         p.buttonlabel
@@ -15,7 +15,7 @@ p.pref
   | &nbsp;
   = @arcade.prefecture.name
 
-#title.l-justify-column
+#title
   h1.title
     = @arcade.name
 h4
@@ -26,9 +26,10 @@ h5
 
 #map.map
 
-#machine.l-justify-column
+#machine
   h1.machine
     = icon 'fas', 'compact-disc'
+    | &nbsp;
     | beatmania IIDX
 
 = render partial: 'shared/iidx', collection: @iidx
@@ -36,7 +37,7 @@ h5
 - if user_signed_in?
   #buttons.l-justify-column
     .l-justify-right.u-width100percent
-      = link_to(new_iidx_path(@arcade))
+      = link_to(new_iidx_with_ac_path(amusement_arcade_id: @arcade.id))
         p.buttonlabel
           | 追加
 
