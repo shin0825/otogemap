@@ -7,7 +7,7 @@ end
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.1.6'
+gem 'rails', '~> 5.2.3'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
@@ -51,6 +51,8 @@ gem 'font-awesome-sass', '~> 5.4.1'
 gem 'gmaps4rails'
 gem 'http'
 gem 'dotenv-rails'
+
+gem 'ajax_error_renderer'
 
 group :development, :test do
   # Use sqlite3 as the database for Active Record

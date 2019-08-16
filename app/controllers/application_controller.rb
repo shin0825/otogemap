@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  include AjaxErrorRenderer
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   # このアクションを追加
