@@ -27,6 +27,15 @@
         .box-context-body
           = f.check_box :paseli_availability
           | 使用可能
+      .box-context
+        .box-context-title
+          = f.label '特徴'
+        .box-context-body
+          = f.collection_check_boxes(:machine_tag_ids, @tags, :id, :name, include_hidden: false) do |c|
+            label.tag
+              = c.check_box
+              span
+                = c.text
     .box-title
       #buttons
         = f.submit '保存', class: 'btn'

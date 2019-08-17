@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
   resources :iidxes
   get "iidxes/new/:amusement_arcade_id" => "iidxes#new", :as => "new_iidx_with_ac"
+  get 'iidxes/machine_tag/:name', to: "iidxes#iidxes_machine_tag", :as => "iidxes_machine_tag"
   resources :amusement_arcades
   get 'amusement_arcades/shop_tag/:name', to: "amusement_arcades#shop_tag", :as => "shop_tag"
 end

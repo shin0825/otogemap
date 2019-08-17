@@ -18,6 +18,19 @@
     | &nbsp;-&nbsp;
     = @iidx.name
 
+h4.tags
+  - if @iidx.machine_tags.present?
+    p.click_to_search
+      | 選択で特徴を含む筐体を検索
+  | 特徴：
+  - if @iidx.machine_tags.present?
+    - @iidx.machine_tags.each do |machine_tag|
+      = link_to iidxes_machine_tag_path(machine_tag.name)
+        span
+          = machine_tag.name
+  - else
+    | とくになし
+
 .contentBox.l-direction-column
   .box-title
     | 料金設定

@@ -4,6 +4,7 @@ class IidxesController < ApplicationController
 
   def new
     @iidx = Iidx.new()
+    @tags = MachineTag.all
     @iidx.amusement_arcade_id = params[:amusement_arcade_id] unless params[:amusement_arcade_id].blank?
   end
 
@@ -11,7 +12,9 @@ class IidxesController < ApplicationController
     @arcade = AmusementArcade.find(@iidx.amusement_arcade_id)
   end
 
-  def edit; end
+  def edit
+    @tags = MachineTag.all
+  end
 
   def create
     @iidx = Iidx.new(iidx_params)
@@ -23,6 +26,7 @@ class IidxesController < ApplicationController
   end
 
   def update
+    @iidx.machine_tags.clear
     if @iidx.update(iidx_params)
       redirect_to @iidx.amusement_arcade, notice: 'updated!!'
     else
@@ -34,6 +38,12 @@ class IidxesController < ApplicationController
     arcade_id = @iidx.amusement_arcade.id
     @iidx.destroy
     redirect_to amusement_arcade_path(arcade_id), notice: 'IIDX筐体方法を削除しました'
+  end
+
+  def iidxes_machine_tag
+    @tag = MachineTag.find_by(name: params[:name])
+    @iidxes = @tag.iidxes.build
+    @iidx  = @tag.iidxes.page(params[:page])
   end
 
   private
@@ -52,7 +62,8 @@ class IidxesController < ApplicationController
         :premium_free_time_from,
         :premium_free_time_to,
         :paseli_availability,
-        :amusement_arcade_id
+        :amusement_arcade_id,
+        { machine_tag_ids: [] }
       )
     end
 end
