@@ -21,6 +21,15 @@
           = f.label :address, '住所'
         .box-context-body
           = f.text_field :address
+      .box-context
+        .box-context-title
+          = f.label '特徴'
+        .box-context-body
+          = f.collection_check_boxes(:shop_tag_ids, @tags, :id, :name, include_hidden: false) do |c|
+            label.tag
+              = c.check_box
+              span
+                = c.text
     .box-title
       #buttons
         = f.submit '保存', class: 'btn'

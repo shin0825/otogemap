@@ -21,6 +21,16 @@ p.pref
 h4
   = @arcade.name_kana
 
+h4.tags
+  | 特徴：
+  - if @arcade.shop_tags.present?
+    - @arcade.shop_tags.each do |shop_tag|
+      | &nbsp;
+      = link_to shop_tag_path(shop_tag.name)
+        = shop_tag.name
+  - else
+    | とくになし
+
 h5
   = @arcade.address
 

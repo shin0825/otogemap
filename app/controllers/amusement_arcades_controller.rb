@@ -8,6 +8,7 @@ class AmusementArcadesController < ApplicationController
 
   def new
     @arcade = AmusementArcade.new()
+    @tags = ShopTag.all
   end
 
   def show
@@ -20,7 +21,9 @@ class AmusementArcadesController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+    @tags = ShopTag.all
+  end
 
   def create
     @arcade = AmusementArcade.new(arcade_params)
@@ -32,6 +35,7 @@ class AmusementArcadesController < ApplicationController
   end
 
   def update
+    @arcade.shop_tags.clear
     if @arcade.update(arcade_params)
       redirect_to @arcade, notice: 'updated!!'
     else
@@ -44,6 +48,12 @@ class AmusementArcadesController < ApplicationController
     redirect_to amusement_arcades_path, notice: 'ゲームセンター情報を削除しました'
   end
 
+  def shop_tag
+    @tag = ShopTag.find_by(name: params[:name])
+    @arcades = @tag.amusement_arcades.build
+    @arcade  = @tag.amusement_arcades.page(params[:page])
+  end
+
   private
     def finding_arcade
       @arcade = AmusementArcade.find_by(id: params[:id])
@@ -54,7 +64,9 @@ class AmusementArcadesController < ApplicationController
         :name,
         :name_kana,
         :prefecture_id,
-        :address
+        :address,
+        :shop_tag_text,
+        { shop_tag_ids: [] }
       )
     end
 end
