@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190806034506) do
+ActiveRecord::Schema.define(version: 2019_08_17_063834) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "amusement_arcade_shop_tags", force: :cascade do |t|
+    t.bigint "amusement_arcade_id"
+    t.bigint "shop_tag_id"
+    t.index ["amusement_arcade_id"], name: "index_amusement_arcade_shop_tags_on_amusement_arcade_id"
+    t.index ["shop_tag_id"], name: "index_amusement_arcade_shop_tags_on_shop_tag_id"
+  end
 
   create_table "amusement_arcades", force: :cascade do |t|
     t.text "name"
@@ -50,6 +57,13 @@ ActiveRecord::Schema.define(version: 20190806034506) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "shop_tags", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_shop_tags_on_name", unique: true
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -62,6 +76,8 @@ ActiveRecord::Schema.define(version: 20190806034506) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "amusement_arcade_shop_tags", "amusement_arcades"
+  add_foreign_key "amusement_arcade_shop_tags", "shop_tags"
   add_foreign_key "amusement_arcades", "prefectures"
   add_foreign_key "iidxes", "amusement_arcades"
 end
