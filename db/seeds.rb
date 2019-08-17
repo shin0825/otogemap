@@ -56,3 +56,12 @@ AmusementArcade.create(
   :latitude => 35.169398,
   :longitude => 136.885995,
 )
+
+ShopTag.create(:id => 1, :name => 'トイレあり')
+ShopTag.create(:id => 2, :name => '禁煙')
+ShopTag.create(:id => 3, :name => '分煙')
+ShopTag.create(:id => 4, :name => '喫煙ルームあり')
+ShopTag.create(:id => 5, :name => '灰皿あり')
+ShopTag.create(:id => 6, :name => '荷物置き場あり')
+ShopTag.create(:id => 7, :name => 'コインロッカーあり')
+ShopTag.create(:id => 8, :name => '休憩スペースあり')
