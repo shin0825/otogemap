@@ -22,12 +22,15 @@ h4
   = @arcade.name_kana
 
 h4.tags
+  - if @arcade.shop_tags.present?
+    p.click_to_search
+      | 選択で特徴を含むゲーセンを検索
   | 特徴：
   - if @arcade.shop_tags.present?
     - @arcade.shop_tags.each do |shop_tag|
-      | &nbsp;
       = link_to shop_tag_path(shop_tag.name)
-        = shop_tag.name
+        span
+          = shop_tag.name
   - else
     | とくになし
 
