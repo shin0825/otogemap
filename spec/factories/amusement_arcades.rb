@@ -6,5 +6,7 @@ FactoryBot.define do
     latitude { 1 }
     longitude { 1 }
     association :prefecture, factory: :prefecture
+    homepage_url { "http://twitter.com/" }
+    twitter_url { "http://twitter.com/" }
   end
 end
