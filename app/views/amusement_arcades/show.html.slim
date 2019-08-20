@@ -24,6 +24,21 @@ p.pref
 h4
   = @arcade.name_kana
 
+.l-justify-left
+  - if @arcade.homepage_url.present?
+    p.link
+      = link_to(@arcade.homepage_url, target: '_blank')
+        = icon 'fas', 'home'
+        | &nbsp;
+        | HP
+        | &nbsp;
+  - if @arcade.twitter_url.present?
+    p.link
+      = link_to(@arcade.twitter_url, target: '_blank')
+        = icon 'fab', 'twitter'
+        | &nbsp;
+        | Twitter
+
 h4.tags
   - if @arcade.shop_tags.present?
     p.click_to_search
@@ -37,8 +52,16 @@ h4.tags
   - else
     | とくになし
 
-h5
-  = @arcade.address
+h5.link
+  - if @arcade.prefecture.present?
+    = link_to("https://www.google.co.jp/maps/place/#{@arcade.address}", target: '_blank')
+      = icon 'fas', 'map-marker-alt'
+      | &nbsp;
+      = @arcade.address
+  - else
+    = icon 'fas', 'map-marker-alt'
+    | &nbsp;
+    = @arcade.address
 
 #map.map
 
