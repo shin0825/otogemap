@@ -66,6 +66,8 @@ class AmusementArcadesController < ApplicationController
         :prefecture_id,
         :address,
         :shop_tag_text,
+        :homepage_url,
+        :twitter_url,
         { shop_tag_ids: [] }
       )
     end

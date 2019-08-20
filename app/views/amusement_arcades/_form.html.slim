@@ -30,6 +30,16 @@
               = c.check_box
               span
                 = c.text
+      .box-context
+        .box-context-title
+          = f.label :homepage_url, 'ホームページURL'
+        .box-context-body
+          = f.text_field :homepage_url
+      .box-context
+        .box-context-title
+          = f.label :twitter_url, 'Twitter URL'
+        .box-context-body
+          = f.text_field :twitter_url
     .box-title
       #buttons
         = f.submit '保存', class: 'btn'
