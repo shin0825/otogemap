@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_17_144231) do
+ActiveRecord::Schema.define(version: 2019_08_20_140429) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,8 @@ ActiveRecord::Schema.define(version: 2019_08_17_144231) do
     t.float "longitude"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "homepage_url"
+    t.string "twitter_url"
     t.index ["prefecture_id"], name: "index_amusement_arcades_on_prefecture_id"
   end
 

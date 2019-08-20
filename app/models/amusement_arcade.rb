@@ -1,33 +1,40 @@
 class AmusementArcade < ApplicationRecord
-  belongs_to :prefecture
+  belongs_to :prefecture, optional: true
   has_many :iidx, :dependent => :nullify
   has_many :amusement_arcade_shop_tags
   has_many :shop_tags, through: :amusement_arcade_shop_tags
   accepts_nested_attributes_for :shop_tags, allow_destroy: true
 
-  before_validation :set_prefecture
   validates :name, presence: true
   validates :name_kana, presence: true
-  validates :prefecture_id, presence: true
+  validates :address, presence: true
+  regex = URI.regexp(['http', 'https'])
+  validates :homepage_url, length: { maximum: 120 }, format: { with: regex, message: "ホームページURLが不正です。" }, allow_nil: true
+  validates :twitter_url, length: { maximum: 120 }, format: { with: regex, message: "Twitter URLが不正です。" }, allow_nil: true
 
-  after_validation :geocode
+  after_validation :geocode, :set_prefecture
 
   private
   def geocode
+    self.latitude = 0
+    self.longitude = 0
+
+    return if self.address == nil
+
     uri = URI.escape("https://maps.googleapis.com/maps/api/geocode/json?address="+self.address.gsub(" ", "")+"&key=" + ENV['GCP_API_KEY'])
     res = HTTP.get(uri).to_s
     response = JSON.parse(res)
     if response["status"] == 'OK'
       self.latitude = response["results"][0]["geometry"]["location"]["lat"]
       self.longitude = response["results"][0]["geometry"]["location"]["lng"]
-    else
-      self.latitude = 0
-      self.longitude = 0
     end
   end
 
   def set_prefecture
     self.prefecture_id = nil
+
+    return if self.address == nil
+
     prefecture_name = self.address.match(/.*[都道府県]/)
     if prefecture_name
       prefecture = Prefecture.find_by(name: prefecture_name[0])

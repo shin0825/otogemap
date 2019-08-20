@@ -13,7 +13,10 @@
 p.pref
   = icon 'fas', 'map-marker-alt'
   | &nbsp;
-  = @arcade.prefecture.name
+  - if @arcade.prefecture.present?
+    = @arcade.prefecture.name
+  - else
+    | （住所不明）
 
 #title
   h1.title
