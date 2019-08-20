@@ -9,8 +9,8 @@ class AmusementArcade < ApplicationRecord
   validates :name_kana, presence: true
   validates :address, presence: true
   regex = URI.regexp(['http', 'https'])
-  validates :homepage_url, length: { maximum: 120 }, format: { with: regex, message: "ホームページURLが不正です。" }, allow_nil: true
-  validates :twitter_url, length: { maximum: 120 }, format: { with: regex, message: "Twitter URLが不正です。" }, allow_nil: true
+  validates :homepage_url, length: { maximum: 120 }, format: { with: regex }, allow_nil: true
+  validates :twitter_url, length: { maximum: 120 }, format: { with: regex }, allow_nil: true
 
   after_validation :geocode, :set_prefecture
 

@@ -59,7 +59,7 @@ RSpec.describe AmusementArcade, type: :model do
     end
     it "Twitter URLのフォーマットエラーメッセージが表示されること" do
       amusement_arcade.valid?
-      expect(amusement_arcade.errors[:homepage_url]).to include("ホームページURLが不正です。")
+      expect(amusement_arcade.errors[:homepage_url]).to include("は不正な値です")
     end
   end
 
@@ -70,7 +70,7 @@ RSpec.describe AmusementArcade, type: :model do
     end
     it "Twitter URLのフォーマットエラーメッセージが表示されること" do
       amusement_arcade.valid?
-      expect(amusement_arcade.errors[:twitter_url]).to include("Twitter URLが不正です。")
+      expect(amusement_arcade.errors[:twitter_url]).to include("は不正な値です")
     end
   end
 
