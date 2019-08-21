@@ -52,6 +52,13 @@ RSpec.describe AmusementArcade, type: :model do
     end
   end
 
+  context "ホームページURLが入力されていない時" do
+    let(:amusement_arcade) { build(:amusement_arcade, homepage_url: '') }
+    it "ホームページURLの未入力エラーとならないこと" do
+      expect(amusement_arcade).to be_valid
+    end
+  end
+
   context "ホームページURLが不正な時" do
     let(:amusement_arcade) { build(:amusement_arcade, homepage_url: 'hogehoge') }
     it "ホームページURLのフォーマットエラーになること" do
@@ -60,6 +67,13 @@ RSpec.describe AmusementArcade, type: :model do
     it "Twitter URLのフォーマットエラーメッセージが表示されること" do
       amusement_arcade.valid?
       expect(amusement_arcade.errors[:homepage_url]).to include("は不正な値です")
+    end
+  end
+
+  context "Twitter URLが入力されていない時" do
+    let(:amusement_arcade) { build(:amusement_arcade, twitter_url: '') }
+    it "Twitter URLの未入力エラーとならないこと" do
+      expect(amusement_arcade).to be_valid
     end
   end
 

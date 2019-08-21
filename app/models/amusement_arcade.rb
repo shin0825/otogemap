@@ -9,10 +9,16 @@ class AmusementArcade < ApplicationRecord
   validates :name_kana, presence: true
   validates :address, presence: true
   regex = URI.regexp(['http', 'https'])
-  validates :homepage_url, length: { maximum: 120 }, format: { with: regex }, allow_nil: true
-  validates :twitter_url, length: { maximum: 120 }, format: { with: regex }, allow_nil: true
+  validates :homepage_url, length: { maximum: 120 }, format: { with: regex }, allow_blank: true
+  validates :twitter_url, length: { maximum: 120 }, format: { with: regex }, allow_blank: true
 
   after_validation :geocode, :set_prefecture
+
+  def self.search(params)
+    shop_tags = params[:search][:shop_tag_ids].map(&:to_i)
+    result = AmusementArcade.includes(:shop_tags).where(amusement_arcade_shop_tags: {shop_tag_id: shop_tags}).references(:shop_tags)
+    result
+  end
 
   private
   def geocode
