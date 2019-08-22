@@ -13,6 +13,7 @@ class AmusementArcadesController < ApplicationController
 
   def show
     @arcade = AmusementArcade.includes(:prefecture).find_by(id: params[:id])
+    @tags = ShopTag.all
     @iidx = @arcade.iidx.order(:name)
     @hash = Gmaps4rails.build_markers(@arcade) do |arcade, marker|
       marker.lat arcade.latitude

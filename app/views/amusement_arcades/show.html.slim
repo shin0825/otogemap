@@ -1,84 +1,85 @@
 - provide(:ttl, 'ゲーセン情報')
 
-- if user_signed_in?
-  #buttons
-    .l-justify-right.u-width100percent
-      = link_to(amusement_arcade_path(@arcade), method: :delete, data: { confirm: '削除してよろしいですか？' })
-        p.buttonlabel
-          | 削除
-      = link_to(edit_amusement_arcade_path(@arcade))
-        p.buttonlabel
-          | 編集
+.yieldcontent
+  - if user_signed_in?
+    #buttons
+      .l-justify-right.u-width100percent
+        = link_to(amusement_arcade_path(@arcade), method: :delete, data: { confirm: '削除してよろしいですか？' })
+          p.buttonlabel
+            | 削除
+        = link_to(edit_amusement_arcade_path(@arcade))
+          p.buttonlabel
+            | 編集
 
-p.pref
-  = icon 'fas', 'map-marker-alt'
-  | &nbsp;
-  - if @arcade.prefecture.present?
-    = @arcade.prefecture.name
-  - else
-    | （住所不明）
+  p.pref
+    = icon 'fas', 'map-marker-alt'
+    | &nbsp;
+    - if @arcade.prefecture.present?
+      = @arcade.prefecture.name
+    - else
+      | （住所不明）
 
-#title
-  h1.title
-    = @arcade.name
-h4
-  = @arcade.name_kana
+  #title
+    h1.title
+      = @arcade.name
+  h4
+    = @arcade.name_kana
 
-.l-justify-left
-  - if @arcade.homepage_url.present?
-    p.link
-      = link_to(@arcade.homepage_url, target: '_blank')
-        = icon 'fas', 'home'
+  .l-justify-left
+    - if @arcade.homepage_url.present?
+      p.link
+        = link_to(@arcade.homepage_url, target: '_blank')
+          = icon 'fas', 'home'
+          | &nbsp;
+          | HP
+          | &nbsp;
+    - if @arcade.twitter_url.present?
+      p.link
+        = link_to(@arcade.twitter_url, target: '_blank')
+          = icon 'fab', 'twitter'
+          | &nbsp;
+          | Twitter
+
+  .tags
+    - if @arcade.shop_tags.present?
+    | 特徴：
+    - if @arcade.shop_tags.present?
+      - @arcade.shop_tags.each do |shop_tag|
+        = link_to shop_tag_path(shop_tag.name)
+          span
+            = shop_tag.name
+    - else
+      | とくになし
+
+  h5.link
+    - if @arcade.prefecture.present?
+      = link_to("https://www.google.co.jp/maps/place/#{@arcade.address}", target: '_blank')
+        = icon 'fas', 'map-marker-alt'
         | &nbsp;
-        | HP
-        | &nbsp;
-  - if @arcade.twitter_url.present?
-    p.link
-      = link_to(@arcade.twitter_url, target: '_blank')
-        = icon 'fab', 'twitter'
-        | &nbsp;
-        | Twitter
-
-h4.tags
-  - if @arcade.shop_tags.present?
-    p.click_to_search
-      | 選択で特徴を含むゲーセンを検索
-  | 特徴：
-  - if @arcade.shop_tags.present?
-    - @arcade.shop_tags.each do |shop_tag|
-      = link_to shop_tag_path(shop_tag.name)
-        span
-          = shop_tag.name
-  - else
-    | とくになし
-
-h5.link
-  - if @arcade.prefecture.present?
-    = link_to("https://www.google.co.jp/maps/place/#{@arcade.address}", target: '_blank')
+        = @arcade.address
+    - else
       = icon 'fas', 'map-marker-alt'
       | &nbsp;
       = @arcade.address
-  - else
-    = icon 'fas', 'map-marker-alt'
-    | &nbsp;
-    = @arcade.address
 
-#map.map
+  #map.map
 
-#machine
-  h1.machine
-    = icon 'fas', 'compact-disc'
-    | &nbsp;
-    | beatmania IIDX
+  #machine
+    h1.machine
+      = icon 'fas', 'compact-disc'
+      | &nbsp;
+      | beatmania IIDX
 
-= render partial: 'shared/iidx', collection: @iidx
+  = render partial: 'shared/iidx', collection: @iidx
 
-- if user_signed_in?
-  #buttons.l-justify-column
-    .l-justify-right.u-width100percent
-      = link_to(new_iidx_with_ac_path(amusement_arcade_id: @arcade.id))
-        p.buttonlabel
-          | 追加
+  - if user_signed_in?
+    #buttons.l-justify-column
+      .l-justify-right.u-width100percent
+        = link_to(new_iidx_with_ac_path(amusement_arcade_id: @arcade.id))
+          p.buttonlabel
+            | 追加
+
+  = render partial: 'shared/arcade_searchbar' ,   locals: { tags: @tags, checked_shop_tag_ids: [] }
 
 javascript:
   handler = Gmaps.build('Google');

@@ -1,3 +1,5 @@
+$main-color: #3C2F41;
+
 @mixin text-color($color: #000) {
   color: $color;
 }
@@ -17,7 +19,7 @@
 }
 
 a {
-  @include link-color(#3C2F41);
+  @include link-color($main-color);
 }
 
 .link {
@@ -26,17 +28,51 @@ a {
   }
 }
 
-header {
+.navbar {
+  position: fixed;
+  z-index: 1;
+  display: flex;
   background-color: #FFF;
-  color: #3C2F41;
+  color: $main-color;
   font-size: 1.5rem;
   text-align: left;
-  padding: .5rem .5rem .5rem 1.5rem;
-
+  width: 100%;
   a {
-    @include link-color(#3C2F41);
+    @include link-color($main-color);
     font-size: 1.5rem;
   }
+
+  &__left {
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    padding: .5rem .5rem .5rem 1.5rem;
+    text-align: left;
+  }
+
+  &__right {
+    width: 50%;
+    padding: .5rem .5rem .5rem 1.5rem;
+    text-align: right;
+  }
+}
+
+.content {
+  background-color: $main-color;
+  color: #FFF;
+  padding-top: 4rem;
+}
+
+.yieldcontent {
+  width: 100%;
+}
+
+.context {
+  position: relative;
+  max-width: 900px;
+  margin: auto;
+  padding: 1.5rem;
+  width: 95%;
 }
 
 #buttons {
@@ -72,19 +108,6 @@ header {
   }
 }
 
-.content {
-  background-color: #3C2F41;
-  color: #FFF;
-}
-
-.context {
-  position: relative;
-  max-width: 1200px;
-  margin: auto;
-  padding: 1.5rem;
-  width: 95%;
-}
-
 #machine {
   margin-top: 1rem;
 
@@ -96,17 +119,16 @@ header {
 
 .tags {
   background-color: #FFF;
-  color: #3C2F41;
+  color: $main-color;
   border-radius: .5rem;
   padding: 1rem;
-  margin-top: 1rem;
 
   span {
     background-color: #c1b1d1;
     color: #515151;
     border-radius: 4px;
     padding: .5rem 1rem .5rem 1rem;
-    margin: 0 .5rem .5rem 0;
+    margin: 0 .5rem 0 0;
     cursor: pointer;
     display: inline-block;
     position: relative;
@@ -155,7 +177,7 @@ header {
   margin-top: 1rem;
   margin-bottom: 1.5rem;
   width: 100%;
-  @include text-color(#3C2F41);
+  @include text-color($main-color);
 
   .box-title {
     background-color: #B481BB;

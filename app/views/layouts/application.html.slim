@@ -12,17 +12,16 @@ html
     script src='//cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/infobox/src/infobox_packed.js' type='text/javascript'
 
   body
-    header
-      .u-width100percent.l-flex
-        .l-left style="width: 50%;"
-          = link_to(root_path)
-            = icon 'fas', 'compact-disc'
-            | IIDXマップ
-        .l-right style="width: 50%;"
-          - if current_user.nil?
-            = link_to "ログイン", login_path
-          - else
-            = link_to "ログアウト", logout_path, data: { confirm: 'ログアウトしますか？' }
+    header.navbar
+      .navbar__left
+        = link_to(root_path)
+          = icon 'fas', 'compact-disc'
+          | IIDX筐体DB
+      .navbar__right
+        - if current_user.nil?
+          = link_to "ログイン⇒", login_path
+        - else
+          = link_to "ログアウト⇒", logout_path, data: { confirm: 'ログアウトしますか？' }
 
     main.content
       section

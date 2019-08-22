@@ -1,0 +1,17 @@
+
+#title
+  h1.title
+    | ゲーセンを検索：
+
+.tags
+  = form_with(url: amusement_arcades_result_path, method: :get, local: true) do
+    p
+      | 検索条件：
+      = collection_check_boxes(:search, :shop_tag_ids, tags, :id, :name, include_hidden: false, checked: checked_shop_tag_ids) do |c|
+        label.tag
+          = c.check_box
+          span
+            = c.text
+    p
+      #buttons
+        = submit_tag '検索', class: "btn"
