@@ -24,6 +24,8 @@ class Iidx < ApplicationRecord
             .where(iidx_machine_tags: {machine_tag_id: machine_tags})
         else
             result = Iidx.all
+            .joins(amusement_arcade: :prefecture)
+            .merge(Prefecture.where(id: prefecture_id))
         end
         result
     end
