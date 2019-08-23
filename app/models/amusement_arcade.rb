@@ -18,7 +18,6 @@ class AmusementArcade < ApplicationRecord
     shop_tags = params[:search][:shop_tag_ids].map(&:to_i)
     result = AmusementArcade.select(:id).includes(:shop_tags)
       .where(amusement_arcade_shop_tags: {shop_tag_id: shop_tags})
-      .references(:shop_tags)
     result
   end
 
