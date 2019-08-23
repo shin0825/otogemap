@@ -14,9 +14,9 @@ class Iidx < ApplicationRecord
     validates :premium_free_time_to, numericality: { only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 99 }, allow_nil: true
 
     def self.search(params)
+        prefecture_id =  params[:search][:prefecture_id].present? ? params[:search][:prefecture_id] : 23
         if params[:search][:machine_tag_ids].present?
             machine_tags =  params[:search][:machine_tag_ids].map(&:to_i)
-            prefecture_id =  params[:search][:prefecture_id]
             result = Iidx.all
             .joins(amusement_arcade: :prefecture)
             .merge(Prefecture.where(id: prefecture_id))
