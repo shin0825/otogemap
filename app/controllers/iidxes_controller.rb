@@ -10,6 +10,7 @@ class IidxesController < ApplicationController
 
   def show
     @arcade = AmusementArcade.find(@iidx.amusement_arcade_id)
+    @tags = MachineTag.all
   end
 
   def edit

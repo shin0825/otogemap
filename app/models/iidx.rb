@@ -12,4 +12,19 @@ class Iidx < ApplicationRecord
     validates :paseli_price, numericality: { only_integer: true, greater_than_or_equal_to: 10, less_than_or_equal_to: 1000 }, allow_nil: true
     validates :premium_free_time_from, numericality: { only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 99 }, allow_nil: true
     validates :premium_free_time_to, numericality: { only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 99 }, allow_nil: true
+
+    def self.search(params)
+        if params[:search][:machine_tag_ids].present?
+            machine_tags =  params[:search][:machine_tag_ids].map(&:to_i)
+            prefecture_id =  params[:search][:prefecture_id]
+            result = Iidx.all
+            .joins(amusement_arcade: :prefecture)
+            .merge(Prefecture.where(id: prefecture_id))
+            .includes(:iidx_machine_tags)
+            .where(iidx_machine_tags: {machine_tag_id: machine_tags})
+        else
+            result = Iidx.all
+        end
+        result
+    end
 end
