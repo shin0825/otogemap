@@ -15,18 +15,17 @@ class Iidx < ApplicationRecord
 
     def self.search(params)
         prefecture_id =  params[:search][:prefecture_id].present? ? params[:search][:prefecture_id] : 23
-        if params[:search][:machine_tag_ids].present?
-            machine_tags =  params[:search][:machine_tag_ids].map(&:to_i)
-            result = Iidx.all
+        result = Iidx.all
             .joins(amusement_arcade: :prefecture)
-            .merge(Prefecture.where(id: prefecture_id))
-            .includes(:iidx_machine_tags)
-            .where(iidx_machine_tags: {machine_tag_id: machine_tags})
-        else
-            result = Iidx.all
-            .joins(amusement_arcade: :prefecture)
-            .merge(Prefecture.where(id: prefecture_id))
-        end
+            .merge(Prefecture.where(id: prefecture_id)) # TODO: AmusementArcadeのscopeにうつす
+            .then{|result|
+                if params[:search][:machine_tag_ids].present?
+                    result.includes(:iidx_machine_tags)
+                    .where(iidx_machine_tags: {machine_tag_id: params[:search][:machine_tag_ids].map(&:to_i)})
+                else
+                    result.all
+                end
+            }
         result
     end
 end
