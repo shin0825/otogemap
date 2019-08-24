@@ -12,6 +12,7 @@
           = c.check_box
           span
             = c.text
+      = collection_select(:search, :prefecture_id, Prefecture.all.order(:id), :id, :name, selected: prefecture_id)
     p
       #buttons
         = submit_tag '検索', class: "btn"

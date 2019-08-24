@@ -15,9 +15,19 @@ class AmusementArcade < ApplicationRecord
   after_validation :geocode, :set_prefecture
 
   def self.search(params)
-    shop_tags = params[:search][:shop_tag_ids].map(&:to_i)
-    result = AmusementArcade.select(:id).includes(:shop_tags)
-      .where(amusement_arcade_shop_tags: {shop_tag_id: shop_tags})
+    prefecture_id =  params[:search][:prefecture_id].present? ? params[:search][:prefecture_id] : 23
+    result = AmusementArcade.all
+        .joins(:prefecture)
+        .merge(Prefecture.where(id: prefecture_id)) # TODO: AmusementArcadeのscopeにうつす
+        .then{|result|
+            shop_tags = params[:search][:shop_tag_ids]
+            if shop_tags.present?
+                result.includes(:shop_tags)
+                .where(amusement_arcade_shop_tags: {shop_tag_id: shop_tags.map(&:to_i)})
+            else
+                result.all
+            end
+        }
     result
   end
 
