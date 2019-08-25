@@ -29,6 +29,40 @@
           | 使用可能
       .box-context
         .box-context-title
+          = f.label :paseli_price, 'プレミアムプレー料金'
+        .box-context-body
+          = f.text_field :paseli_price
+      .box-context
+        .box-context-title
+          = f.label :premium_free_time_from, 'プレミアムフリー分数(From)'
+        .box-context-body
+          = f.text_field :premium_free_time_from
+          | 分
+      .box-context
+        .box-context-title
+          = f.label :premium_free_time_to, 'プレミアムフリー分数(To)'
+        .box-context-body
+          = f.text_field :premium_free_time_to
+          | 分
+      .box-context
+        .box-context-title
+          = f.label :serial_no, 'シリアルナンバー'
+        .box-context-body
+          = f.text_field :serial_no
+      .box-context
+        .box-context-title
+          = f.label :spring_weight, 'バネ'
+        .box-context-body
+          = f.text_field :spring_weight
+          | g
+      .box-context
+        .box-context-title
+          = f.label :switch_weight, 'スイッチ'
+        .box-context-body
+          = f.text_field :switch_weight
+          | N
+      .box-context
+        .box-context-title
           = f.label '特徴'
         .box-context-body
           = f.collection_check_boxes(:machine_tag_ids, @tags, :id, :name, include_hidden: false) do |c|

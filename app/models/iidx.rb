@@ -4,7 +4,7 @@ class Iidx < ApplicationRecord
     has_many :machine_tags, through: :iidx_machine_tags
     accepts_nested_attributes_for :machine_tags, allow_destroy: true
 
-    validates :serial_no, length: { is: 12 }, format: { with: /\A[a-zA-Z]{6}\d{6}\z/, message: "シリアルは半角アルファベット6文字と半角数値6文字となります" }, allow_nil: true
+    validates :serial_no, length: { is: 12 }, format: { with: /\A[a-zA-Z]{6}\d{6}\z/, message: "シリアルは半角アルファベット6文字と半角数値6文字となります" }, allow_nil: true, allow_blank: true
     validates :spring_weight, numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 100}, allow_nil: true
     validates :switch_weight, numericality: { greater_than_or_equal_to: 0.01, less_than_or_equal_to: 1.00}, allow_nil: true
     validates :cash_price, numericality: { only_integer: true, greater_than_or_equal_to: 10, less_than_or_equal_to: 1000}, presence: true
@@ -14,7 +14,7 @@ class Iidx < ApplicationRecord
     validates :premium_free_time_to, numericality: { only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 99 }, allow_nil: true
 
     def self.search(params)
-        prefecture_id =  params[:search][:prefecture_id].present? ? params[:search][:prefecture_id] : 23
+        prefecture_id =  params[:search][:prefecture_id].present? ? params[:search][:prefecture_id] : 23 # TODO: magicnumber
         result = Iidx.all
             .joins(amusement_arcade: :prefecture)
             .merge(Prefecture.where(id: prefecture_id)) # TODO: AmusementArcadeのscopeにうつす

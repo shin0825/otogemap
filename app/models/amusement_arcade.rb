@@ -15,7 +15,7 @@ class AmusementArcade < ApplicationRecord
   after_validation :geocode, :set_prefecture
 
   def self.search(params)
-    prefecture_id =  params[:search][:prefecture_id].present? ? params[:search][:prefecture_id] : 23
+    prefecture_id =  params[:search][:prefecture_id].present? ? params[:search][:prefecture_id] : 23 # TODO: magicnumber
     result = AmusementArcade.all
         .joins(:prefecture)
         .merge(Prefecture.where(id: prefecture_id)) # TODO: AmusementArcadeのscopeにうつす
