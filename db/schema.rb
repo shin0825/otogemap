@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_20_140429) do
+ActiveRecord::Schema.define(version: 2019_08_26_034356) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,11 +36,39 @@ ActiveRecord::Schema.define(version: 2019_08_20_140429) do
     t.index ["prefecture_id"], name: "index_amusement_arcades_on_prefecture_id"
   end
 
+  create_table "iidx_iidx_machines", force: :cascade do |t|
+    t.bigint "iidx_id"
+    t.bigint "iidx_machine_id"
+    t.index ["iidx_id"], name: "index_iidx_iidx_machines_on_iidx_id"
+    t.index ["iidx_machine_id"], name: "index_iidx_iidx_machines_on_iidx_machine_id"
+  end
+
+  create_table "iidx_iidx_monitors", force: :cascade do |t|
+    t.bigint "iidx_id"
+    t.bigint "iidx_monitor_id"
+    t.index ["iidx_id"], name: "index_iidx_iidx_monitors_on_iidx_id"
+    t.index ["iidx_monitor_id"], name: "index_iidx_iidx_monitors_on_iidx_monitor_id"
+  end
+
   create_table "iidx_machine_tags", force: :cascade do |t|
     t.bigint "iidx_id"
     t.bigint "machine_tag_id"
     t.index ["iidx_id"], name: "index_iidx_machine_tags_on_iidx_id"
     t.index ["machine_tag_id"], name: "index_iidx_machine_tags_on_machine_tag_id"
+  end
+
+  create_table "iidx_machines", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_iidx_machines_on_name", unique: true
+  end
+
+  create_table "iidx_monitors", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_iidx_monitors_on_name", unique: true
   end
 
   create_table "iidxes", force: :cascade do |t|
@@ -95,6 +123,10 @@ ActiveRecord::Schema.define(version: 2019_08_20_140429) do
   add_foreign_key "amusement_arcade_shop_tags", "amusement_arcades"
   add_foreign_key "amusement_arcade_shop_tags", "shop_tags"
   add_foreign_key "amusement_arcades", "prefectures"
+  add_foreign_key "iidx_iidx_machines", "iidx_machines"
+  add_foreign_key "iidx_iidx_machines", "iidxes"
+  add_foreign_key "iidx_iidx_monitors", "iidx_monitors"
+  add_foreign_key "iidx_iidx_monitors", "iidxes"
   add_foreign_key "iidx_machine_tags", "iidxes"
   add_foreign_key "iidx_machine_tags", "machine_tags"
   add_foreign_key "iidxes", "amusement_arcades"
