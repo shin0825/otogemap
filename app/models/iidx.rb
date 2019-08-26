@@ -1,5 +1,7 @@
 class Iidx < ApplicationRecord
-    belongs_to :amusement_arcade
+    belongs_to :amusement_arcade, optional: true
+    belongs_to :iidx_machine, optional: true
+    belongs_to :iidx_monitor, optional: true
     has_many :iidx_machine_tags
     has_many :machine_tags, through: :iidx_machine_tags
     accepts_nested_attributes_for :machine_tags, allow_destroy: true
