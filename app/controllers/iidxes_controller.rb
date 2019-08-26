@@ -57,13 +57,17 @@ class IidxesController < ApplicationController
         :name,
         :serial_no,
         :spring_weight,
+        :spring_is_found_value,
         :switch_weight,
+        :switch_is_found_value,
         :cash_price,
         :paseli_price,
         :premium_free_time_from,
         :premium_free_time_to,
         :paseli_availability,
         :amusement_arcade_id,
+        :iidx_machine_id,
+        :iidx_monitor_id,
         { machine_tag_ids: [] }
       )
     end

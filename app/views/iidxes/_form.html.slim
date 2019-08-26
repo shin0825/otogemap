@@ -46,6 +46,16 @@
           | 分
       .box-context
         .box-context-title
+          = f.label :iidx_machine_id, '筐体種類'
+        .box-context-body
+          = f.collection_select(:iidx_machine_id, IidxMachine.all.order(:id), :id, :name, {}, { :class => 'selectbox' })
+      .box-context
+        .box-context-title
+          = f.label :iidx_monitor_id, 'モニタ種類'
+        .box-context-body
+          = f.collection_select(:iidx_monitor_id, IidxMonitor.all.order(:id), :id, :name, {}, { :class => 'selectbox' })
+      .box-context
+        .box-context-title
           = f.label :serial_no, 'シリアルナンバー'
         .box-context-body
           = f.text_field :serial_no
@@ -55,12 +65,18 @@
         .box-context-body
           = f.text_field :spring_weight
           | g
+          | &nbsp;
+          = f.check_box :spring_is_found_value
+          | 実測値
       .box-context
         .box-context-title
           = f.label :switch_weight, 'スイッチ'
         .box-context-body
           = f.text_field :switch_weight
           | N
+          | &nbsp;
+          = f.check_box :switch_is_found_value
+          | 実測値
       .box-context
         .box-context-title
           = f.label '特徴'

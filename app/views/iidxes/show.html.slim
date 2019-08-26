@@ -76,6 +76,16 @@ h4.tags
     |
     .box-context
       .box-context-title
+        | 筐体種類
+      .box-context-body
+        = @iidx.iidx_machine.name
+    .box-context
+      .box-context-title
+        | モニタ種類
+      .box-context-body
+        = @iidx.iidx_monitor.name
+    .box-context
+      .box-context-title
         | シリアル
       .box-context-body
         - unless @iidx.serial_no.blank?
@@ -89,6 +99,7 @@ h4.tags
         - unless @iidx.spring_weight.blank?
           = @iidx.spring_weight
           | g
+          = '(多分)' unless @iidx.spring_is_found_value
         - else
           | 不明
     .box-context
@@ -98,6 +109,7 @@ h4.tags
         - unless @iidx.switch_weight.blank?
           = @iidx.switch_weight
           | N
+          = '(多分)' unless @iidx.switch_is_found_value
         - else
           | 不明
 
