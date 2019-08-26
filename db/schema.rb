@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_26_140256) do
+ActiveRecord::Schema.define(version: 2019_08_26_142902) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,7 +72,11 @@ ActiveRecord::Schema.define(version: 2019_08_26_140256) do
     t.bigint "amusement_arcade_id"
     t.boolean "spring_is_found_value", default: false, null: false
     t.boolean "switch_is_found_value", default: false, null: false
+    t.bigint "iidx_machine_id"
+    t.bigint "iidx_monitor_id"
     t.index ["amusement_arcade_id"], name: "index_iidxes_on_amusement_arcade_id"
+    t.index ["iidx_machine_id"], name: "index_iidxes_on_iidx_machine_id"
+    t.index ["iidx_monitor_id"], name: "index_iidxes_on_iidx_monitor_id"
   end
 
   create_table "machine_tags", force: :cascade do |t|
@@ -114,4 +118,6 @@ ActiveRecord::Schema.define(version: 2019_08_26_140256) do
   add_foreign_key "iidx_machine_tags", "iidxes"
   add_foreign_key "iidx_machine_tags", "machine_tags"
   add_foreign_key "iidxes", "amusement_arcades"
+  add_foreign_key "iidxes", "iidx_machines"
+  add_foreign_key "iidxes", "iidx_monitors"
 end
