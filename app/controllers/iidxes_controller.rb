@@ -20,7 +20,7 @@ class IidxesController < ApplicationController
   def create
     @iidx = Iidx.new(iidx_params)
     if @iidx.save
-      redirect_to @iidx.amusement_arcade, notice: 'created!!'
+      redirect_to iidx_path(@iidx), notice: 'created!!'
     else
       render_ajax_error model: @iidx
     end
@@ -29,7 +29,7 @@ class IidxesController < ApplicationController
   def update
     @iidx.machine_tags.clear
     if @iidx.update(iidx_params)
-      redirect_to @iidx.amusement_arcade, notice: 'updated!!'
+      redirect_to iidx_path(@iidx), notice: 'updated!!'
     else
       render_ajax_error model: @iidx
     end
@@ -38,7 +38,7 @@ class IidxesController < ApplicationController
   def destroy
     arcade_id = @iidx.amusement_arcade.id
     @iidx.destroy
-    redirect_to amusement_arcade_path(arcade_id), notice: 'IIDX筐体方法を削除しました'
+    redirect_to amusement_arcade_path(arcade_id), notice: 'IIDX筐体情報を削除しました'
   end
 
   def iidxes_machine_tag
