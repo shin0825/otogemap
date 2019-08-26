@@ -8,5 +8,6 @@ FactoryBot.define do
     paseli_price { 10 }
     premium_free_time_from { 1 }
     premium_free_time_to { 1 }
+    association :amusement_arcade, factory: :amusement_arcade
   end
 end

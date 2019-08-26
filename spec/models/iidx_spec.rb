@@ -8,6 +8,13 @@ RSpec.describe Iidx, type: :model do
     end
   end
 
+  context "シリアルが入力されていない時" do
+    let(:iidx) { build(:iidx, serial_no: '') }
+    it "シリアルの未入力エラーにならないこと" do
+      expect(iidx).to be_valid
+    end
+  end
+
   context "シリアルが12文字より少ない時" do
     let(:iidx) { build(:iidx, serial_no: "A"*6+"0"*5) }
     it "シリアルの文字数エラーになること" do
@@ -52,14 +59,21 @@ RSpec.describe Iidx, type: :model do
     end
   end
 
-  context "バネが1より少ない時" do
-    let(:iidx) { build(:iidx, spring_weight: 0) }
+  context "バネが入力されていない時" do
+    let(:iidx) { build(:iidx, spring_weight: '') }
+    it "バネの未入力エラーにならないこと" do
+      expect(iidx).to be_valid
+    end
+  end
+
+  context "バネが0より少ない時" do
+    let(:iidx) { build(:iidx, spring_weight: -1) }
     it "バネの数値エラーになること" do
       expect(iidx).to_not be_valid
     end
     it "バネの数値エラーメッセージが表示されること" do
       iidx.valid?
-      expect(iidx.errors[:spring_weight]).to include("は1以上の値にしてください")
+      expect(iidx.errors[:spring_weight]).to include("は0以上の値にしてください")
     end
   end
 
@@ -74,14 +88,21 @@ RSpec.describe Iidx, type: :model do
     end
   end
 
-  context "スイッチが0.01より少ない時" do
-    let(:iidx) { build(:iidx, switch_weight: 0.009) }
+  context "スイッチが入力されていない時" do
+    let(:iidx) { build(:iidx, switch_weight: '') }
+    it "スイッチの未入力エラーにならないこと" do
+      expect(iidx).to be_valid
+    end
+  end
+
+  context "スイッチが0.00より少ない時" do
+    let(:iidx) { build(:iidx, switch_weight: -0.0001) }
     it "スイッチの数値エラーになること" do
       expect(iidx).to_not be_valid
     end
     it "スイッチの数値エラーメッセージが表示されること" do
       iidx.valid?
-      expect(iidx.errors[:switch_weight]).to include("は0.01以上の値にしてください")
+      expect(iidx.errors[:switch_weight]).to include("は0.0以上の値にしてください")
     end
   end
 
@@ -93,6 +114,17 @@ RSpec.describe Iidx, type: :model do
     it "スイッチの数値エラーメッセージが表示されること" do
       iidx.valid?
       expect(iidx.errors[:switch_weight]).to include("は1.0以下の値にしてください")
+    end
+  end
+
+  context "現金が入力されていない時" do
+    let(:iidx) { build(:iidx, cash_price: '') }
+    it "現金の入力エラーになること" do
+      expect(iidx).to_not be_valid
+    end
+    it "現金の入力エラーメッセージが表示されること" do
+      iidx.valid?
+      expect(iidx.errors[:cash_price]).to include("を入力してください")
     end
   end
 
@@ -154,6 +186,13 @@ RSpec.describe Iidx, type: :model do
     end
   end
 
+  context "PASELIが入力されていない時" do
+    let(:iidx) { build(:iidx, paseli_price: '') }
+    it "PASELIの未入力エラーにならないこと" do
+      expect(iidx).to be_valid
+    end
+  end
+
   context "PASELIが整数でない時" do
     let(:iidx) { build(:iidx, paseli_price: 100.1) }
     it "PASELIの数値エラーになること" do
@@ -187,6 +226,13 @@ RSpec.describe Iidx, type: :model do
     end
   end
 
+  context "プレミアムフリー最小時間が入力されていない時" do
+    let(:iidx) { build(:iidx, premium_free_time_from: '') }
+    it "プレミアムフリー最小時間の未入力エラーにならないこと" do
+      expect(iidx).to be_valid
+    end
+  end
+
   context "プレミアムフリー最小時間が整数でない時" do
     let(:iidx) { build(:iidx, premium_free_time_from: 10.1) }
     it "プレミアムフリー最小時間の数値エラーになること" do
@@ -217,6 +263,13 @@ RSpec.describe Iidx, type: :model do
     it "プレミアムフリー最小時間の数値エラーメッセージが表示されること" do
       iidx.valid?
       expect(iidx.errors[:premium_free_time_from]).to include("は99以下の値にしてください")
+    end
+  end
+
+  context "プレミアムフリー最大時間が入力されていない時" do
+    let(:iidx) { build(:iidx, premium_free_time_from: '') }
+    it "プレミアムフリー最大時間の未入力エラーにならないこと" do
+      expect(iidx).to be_valid
     end
   end
 
