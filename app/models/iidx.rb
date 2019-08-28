@@ -16,16 +16,44 @@ class Iidx < ApplicationRecord
     validates :premium_free_time_to, numericality: { only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 99 }, allow_nil: true
 
     def self.search(params)
+        serial_no = params[:search][:serial_no]
         prefecture_id =  params[:search][:prefecture_id].present? ? params[:search][:prefecture_id] : 23 # TODO: magicnumber
+        machine_tag_ids =  params[:search][:machine_tag_ids]
+        iidx_machine_id =  params[:search][:iidx_machine_id]
+        iidx_monitor_id =  params[:search][:iidx_monitor_id]
+
         result = Iidx.all
             .joins(amusement_arcade: :prefecture)
             .merge(Prefecture.where(id: prefecture_id)) # TODO: AmusementArcadeのscopeにうつす
             .then{|result|
-                if params[:search][:machine_tag_ids].present?
-                    result.includes(:iidx_machine_tags)
-                    .where(iidx_machine_tags: {machine_tag_id: params[:search][:machine_tag_ids].map(&:to_i)})
+                if serial_no.present?
+                    result.where("serial_no LIKE ?", "%#{serial_no}%")
                 else
-                    result.all
+                    result
+                end
+            }
+            .then{|result|
+                if machine_tag_ids.present?
+                    result.includes(:iidx_machine_tags)
+                    .where(iidx_machine_tags: {machine_tag_id: machine_tag_ids.map(&:to_i)})
+                else
+                    result
+                end
+            }
+            .then{|result|
+                if iidx_machine_id.present?
+                    result.includes(:iidx_machine)
+                    .where(iidx_machine_id: iidx_machine_id)
+                else
+                    result
+                end
+            }
+            .then{|result|
+                if iidx_monitor_id.present?
+                    result.includes(:iidx_monitor)
+                    .where(iidx_monitor_id: iidx_monitor_id)
+                else
+                    result
                 end
             }
         result

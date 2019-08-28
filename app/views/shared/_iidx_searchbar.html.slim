@@ -14,7 +14,14 @@
           span
             = c.text
     p
+      | シリアルナンバー
+      = text_field(:search, :serial_no, value: @serial_no)
+    p
       = collection_select(:search, :prefecture_id, Prefecture.all.order(:id), :id, :name, { selected: prefecture_id }, { :class => 'selectbox' })
+    p
+      = collection_select(:search, :iidx_machine_id, IidxMachine.all.order(:id), :id, :name, { selected: iidx_machine_id, :include_blank => '指定しない' }, { :class => 'selectbox' })
+    p
+      = collection_select(:search, :iidx_monitor_id, IidxMonitor.all.order(:id), :id, :name, { selected: iidx_monitor_id, :include_blank => '指定しない' }, { :class => 'selectbox' })
     p
       #buttons
         = submit_tag '検索', class: "btn"
