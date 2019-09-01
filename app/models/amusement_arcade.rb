@@ -15,6 +15,7 @@ class AmusementArcade < ApplicationRecord
   after_validation :geocode, :set_prefecture
 
   def self.search(params)
+    keywords = params[:search][:key_words].strip.split(/[[:blank:]]+/)
     prefecture_id =  params[:search][:prefecture_id].present? ? params[:search][:prefecture_id] : 23 # TODO: magicnumber
     result = AmusementArcade.all
         .joins(:prefecture)
@@ -27,6 +28,15 @@ class AmusementArcade < ApplicationRecord
             else
                 result.all
             end
+        }
+        .then{|result|
+          if keywords.length > 0
+            keyword_array = keywords.map {|val| "%#{val}%" }
+            result.where("amusement_arcades.name ILIKE ANY ( array[?] )", keyword_array)
+              .or(result.where("amusement_arcades.name_kana ILIKE ANY ( array[?] )", keyword_array))
+          else
+            result
+          end
         }
     result
   end

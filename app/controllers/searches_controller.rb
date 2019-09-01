@@ -13,6 +13,7 @@ class SearchesController < ApplicationController
     @tags = ShopTag.all()
     @checked_shop_tag_ids = params[:search][:shop_tag_ids]
     @prefecture_id = params[:search][:prefecture_id]
+    @key_words = params[:search][:key_words]
     @arcade = AmusementArcade.search(params)
   end
 end
