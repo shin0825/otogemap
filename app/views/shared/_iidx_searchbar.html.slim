@@ -8,19 +8,23 @@
     p
       | 検索条件：
     p
+      | 特徴&nbsp;
       = collection_check_boxes(:search, :machine_tag_ids, tags, :id, :name, include_hidden: false, checked: checked_machine_tag_ids) do |c|
         label.tag
           = c.check_box
           span
             = c.text
     p
-      | シリアルナンバー
+      | シリアルナンバー&nbsp;
       = text_field(:search, :serial_no, value: @serial_no)
     p
+      | 所在地&nbsp;
       = collection_select(:search, :prefecture_id, Prefecture.all.order(:id), :id, :name, { selected: prefecture_id }, { :class => 'selectbox' })
     p
+      | 筐体VER&nbsp;
       = collection_select(:search, :iidx_machine_id, IidxMachine.all.order(:id), :id, :name, { selected: iidx_machine_id, :include_blank => '指定しない' }, { :class => 'selectbox' })
     p
+      | モニタ&nbsp;
       = collection_select(:search, :iidx_monitor_id, IidxMonitor.all.order(:id), :id, :name, { selected: iidx_monitor_id, :include_blank => '指定しない' }, { :class => 'selectbox' })
     p
       #buttons
