@@ -62,7 +62,7 @@
       | &nbsp;
       = @arcade.address
 
-  #map.map
+  iframe id="map" src="https://maps.google.co.jp/maps?output=embed&q=#{@arcade.address}" frameborder="0" allowfullscreen=""
 
   #machine
     h1.machine
@@ -80,12 +80,3 @@
             | 追加
 
   = render partial: 'shared/arcade_searchbar' ,   locals: { tags: @tags, checked_shop_tag_ids: [] , prefecture_id: 23, key_words: @key_words}
-
-javascript:
-  handler = Gmaps.build('Google');
-  handler.buildMap({provider: {}, internal: {id: 'map'}}, function(){
-    markers = handler.addMarkers(#{raw @hash.to_json});
-    handler.bounds.extendWith(markers);
-    handler.fitMapToBounds();
-    handler.getMap().setZoom(17);
-  });
