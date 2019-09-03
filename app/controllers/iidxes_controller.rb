@@ -2,6 +2,10 @@ class IidxesController < ApplicationController
   before_action :authenticate_user!, only: %i(new create edit update destroy)
   before_action :finding_iidx, only: %i(show edit update destroy)
 
+  def index
+    @iidx = Iidx.all.paginate(page: params[:page], per_page: 5)
+  end
+
   def new
     @iidx = Iidx.new()
     @tags = MachineTag.all

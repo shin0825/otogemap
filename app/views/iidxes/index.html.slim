@@ -1,0 +1,16 @@
+- provide(:ttl, 'IIDX情報')
+
+#title
+  h1.title
+    | IIDX 一覧
+
+- if user_signed_in?
+  #buttons
+    .l-justify-right.u-width100percent
+      = link_to(new_iidx_path)
+        p.buttonlabel
+          | 追加
+
+= render partial: 'shared/iidx', collection: @iidx
+
+= will_paginate @iidx

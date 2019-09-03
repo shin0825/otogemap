@@ -1,7 +1,12 @@
 = link_to(iidx) do
   .contentBox.l-direction-column
     .box-title
-      = iidx.name
+      - if !iidx.name.blank?
+        = iidx.name
+      - elsif !iidx.serial_no.blank?
+        = iidx.serial_no
+      - else
+        | (名称なし)
     .box-contexts.l-direction-column
       |
       .box-context

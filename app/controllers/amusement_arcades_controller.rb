@@ -3,7 +3,7 @@ class AmusementArcadesController < ApplicationController
   before_action :finding_arcade, only: %i(edit update destroy)
 
   def index
-    @arcade = AmusementArcade.all.order(:prefecture_id, :address)
+    @arcade = AmusementArcade.all.order(:prefecture_id, :address).paginate(page: params[:page], per_page: 5)
   end
 
   def new

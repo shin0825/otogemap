@@ -4,11 +4,13 @@
   h1.title
     | ゲーセン 一覧
 
-= render partial: 'shared/arcade', collection: @arcade
-
 - if user_signed_in?
   #buttons
     .l-justify-right.u-width100percent
       = link_to(new_amusement_arcade_path)
         p.buttonlabel
           | 追加
+
+= render partial: 'shared/arcade', collection: @arcade
+
+= will_paginate @arcade

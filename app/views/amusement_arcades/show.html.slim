@@ -70,7 +70,12 @@
       | &nbsp;
       | beatmania IIDX
 
-  = render partial: 'shared/iidx', collection: @iidx
+  - if @iidx.present?
+    = render partial: 'shared/iidx', collection: @iidx
+  - else
+    | データがないよ_:(´ཀ`」 ∠):
+    br
+    br
 
   - if user_signed_in?
     #buttons.l-justify-column
