@@ -1,3 +1,5 @@
+User.create!(email: 'hoge@fuga.com', password: 'foobar')
+
 Prefecture.create(:id => 1, :name => '北海道', :name_kana => 'ホッカイドウ')
 Prefecture.create(:id => 2, :name => '青森県', :name_kana => 'アオモリケン')
 Prefecture.create(:id => 3, :name => '岩手県', :name_kana => 'イワテケン')
