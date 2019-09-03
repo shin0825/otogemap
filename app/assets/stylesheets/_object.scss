@@ -232,3 +232,23 @@ a {
     height: 240px;
   }
 }
+
+ul.pagination {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  text-align: center;
+}
+
+ul.pagination li {
+  display: inline;
+  background-color: #FFF;
+  padding: 1rem 1.5rem;
+  text-decoration: none;
+  border-radius: .5rem;
+
+  a {
+    @include link-color($main-color);
+  }
+}
