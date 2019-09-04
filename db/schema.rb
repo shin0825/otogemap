@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(version: 2019_09_04_033302) do
     t.float "spring_weight"
     t.float "switch_weight"
     t.integer "cash_price"
-    t.integer "paseli_standard_price"
+    t.integer "paseli_premium_price"
     t.integer "premium_free_time_from"
     t.integer "premium_free_time_to"
     t.boolean "paseli_availability"
@@ -81,7 +81,7 @@ ActiveRecord::Schema.define(version: 2019_09_04_033302) do
     t.boolean "switch_is_found_value", default: false, null: false
     t.bigint "iidx_machine_id"
     t.bigint "iidx_monitor_id"
-    t.integer "paseli_premium_price"
+    t.integer "paseli_standard_price"
     t.integer "premium_free_price_from"
     t.integer "premium_free_price_to"
     t.bigint "iidx_version_id"
