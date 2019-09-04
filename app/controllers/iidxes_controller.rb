@@ -65,7 +65,7 @@ class IidxesController < ApplicationController
         :switch_weight,
         :switch_is_found_value,
         :cash_price,
-        :paseli_price,
+        :paseli_premium_price,
         :premium_free_time_from,
         :premium_free_time_to,
         :paseli_availability,

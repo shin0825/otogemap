@@ -186,43 +186,163 @@ RSpec.describe Iidx, type: :model do
     end
   end
 
-  context "PASELIが入力されていない時" do
-    let(:iidx) { build(:iidx, paseli_price: '') }
+  context "PASELI(PRM)が入力されていない時" do
+    let(:iidx) { build(:iidx, paseli_premium_price: '') }
     it "PASELIの未入力エラーにならないこと" do
       expect(iidx).to be_valid
     end
   end
 
-  context "PASELIが整数でない時" do
-    let(:iidx) { build(:iidx, paseli_price: 100.1) }
+  context "PASELI(PRM)が整数でない時" do
+    let(:iidx) { build(:iidx, paseli_premium_price: 100.1) }
     it "PASELIの数値エラーになること" do
       expect(iidx).to_not be_valid
     end
     it "PASELIの数値エラーメッセージが表示されること" do
       iidx.valid?
-      expect(iidx.errors[:paseli_price]).to include("は整数で入力してください")
+      expect(iidx.errors[:paseli_premium_price]).to include("は整数で入力してください")
     end
   end
 
-  context "PASELIが10より少ない時" do
-    let(:iidx) { build(:iidx, paseli_price: 9) }
+  context "PASELI(PRM)が10より少ない時" do
+    let(:iidx) { build(:iidx, paseli_premium_price: 9) }
     it "PASELIの数値エラーになること" do
       expect(iidx).to_not be_valid
     end
     it "PASELIの数値エラーメッセージが表示されること" do
       iidx.valid?
-      expect(iidx.errors[:paseli_price]).to include("は10以上の値にしてください")
+      expect(iidx.errors[:paseli_premium_price]).to include("は10以上の値にしてください")
     end
   end
 
-  context "PASELIが1000より大きい時" do
-    let(:iidx) { build(:iidx, paseli_price: 1001) }
+  context "PASELI(PRM)が1000より大きい時" do
+    let(:iidx) { build(:iidx, paseli_premium_price: 1001) }
     it "PASELIの数値エラーになること" do
       expect(iidx).to_not be_valid
     end
     it "PASELIの数値エラーメッセージが表示されること" do
       iidx.valid?
-      expect(iidx.errors[:paseli_price]).to include("は1000以下の値にしてください")
+      expect(iidx.errors[:paseli_premium_price]).to include("は1000以下の値にしてください")
+    end
+  end
+
+  context "PASELI(STD)が入力されていない時" do
+    let(:iidx) { build(:iidx, paseli_standard_price: '') }
+    it "PASELIの未入力エラーにならないこと" do
+      expect(iidx).to be_valid
+    end
+  end
+
+  context "PASELI(STD)が整数でない時" do
+    let(:iidx) { build(:iidx, paseli_standard_price: 100.1) }
+    it "PASELIの数値エラーになること" do
+      expect(iidx).to_not be_valid
+    end
+    it "PASELIの数値エラーメッセージが表示されること" do
+      iidx.valid?
+      expect(iidx.errors[:paseli_standard_price]).to include("は整数で入力してください")
+    end
+  end
+
+  context "PASELI(STD)が10より少ない時" do
+    let(:iidx) { build(:iidx, paseli_standard_price: 9) }
+    it "PASELIの数値エラーになること" do
+      expect(iidx).to_not be_valid
+    end
+    it "PASELIの数値エラーメッセージが表示されること" do
+      iidx.valid?
+      expect(iidx.errors[:paseli_standard_price]).to include("は10以上の値にしてください")
+    end
+  end
+
+  context "PASELI(STD)が1000より大きい時" do
+    let(:iidx) { build(:iidx, paseli_standard_price: 1001) }
+    it "PASELIの数値エラーになること" do
+      expect(iidx).to_not be_valid
+    end
+    it "PASELIの数値エラーメッセージが表示されること" do
+      iidx.valid?
+      expect(iidx.errors[:paseli_standard_price]).to include("は1000以下の値にしてください")
+    end
+  end
+
+  context "PASELI(PF-From)が入力されていない時" do
+    let(:iidx) { build(:iidx, premium_free_price_from: '') }
+    it "PASELIの未入力エラーにならないこと" do
+      expect(iidx).to be_valid
+    end
+  end
+
+  context "PASELI(PF-From)が整数でない時" do
+    let(:iidx) { build(:iidx, premium_free_price_from: 100.1) }
+    it "PASELIの数値エラーになること" do
+      expect(iidx).to_not be_valid
+    end
+    it "PASELIの数値エラーメッセージが表示されること" do
+      iidx.valid?
+      expect(iidx.errors[:premium_free_price_from]).to include("は整数で入力してください")
+    end
+  end
+
+  context "PASELI(PF-From)が10より少ない時" do
+    let(:iidx) { build(:iidx, premium_free_price_from: 9) }
+    it "PASELIの数値エラーになること" do
+      expect(iidx).to_not be_valid
+    end
+    it "PASELIの数値エラーメッセージが表示されること" do
+      iidx.valid?
+      expect(iidx.errors[:premium_free_price_from]).to include("は10以上の値にしてください")
+    end
+  end
+
+  context "PASELI(PF-From)が1000より大きい時" do
+    let(:iidx) { build(:iidx, premium_free_price_from: 1001) }
+    it "PASELIの数値エラーになること" do
+      expect(iidx).to_not be_valid
+    end
+    it "PASELIの数値エラーメッセージが表示されること" do
+      iidx.valid?
+      expect(iidx.errors[:premium_free_price_from]).to include("は1000以下の値にしてください")
+    end
+  end
+
+  context "PASELI(PF-to)が入力されていない時" do
+    let(:iidx) { build(:iidx, premium_free_price_to: '') }
+    it "PASELIの未入力エラーにならないこと" do
+      expect(iidx).to be_valid
+    end
+  end
+
+  context "PASELI(PF-to)が整数でない時" do
+    let(:iidx) { build(:iidx, premium_free_price_to: 100.1) }
+    it "PASELIの数値エラーになること" do
+      expect(iidx).to_not be_valid
+    end
+    it "PASELIの数値エラーメッセージが表示されること" do
+      iidx.valid?
+      expect(iidx.errors[:premium_free_price_to]).to include("は整数で入力してください")
+    end
+  end
+
+  context "PASELI(PF-to)が10より少ない時" do
+    let(:iidx) { build(:iidx, premium_free_price_to: 9) }
+    it "PASELIの数値エラーになること" do
+      expect(iidx).to_not be_valid
+    end
+    it "PASELIの数値エラーメッセージが表示されること" do
+      iidx.valid?
+      expect(iidx.errors[:premium_free_price_to]).to include("は10以上の値にしてください")
+    end
+  end
+
+  context "PASELI(PF-to)が1000より大きい時" do
+    let(:iidx) { build(:iidx, premium_free_price_to: 1001) }
+    it "PASELIの数値エラーになること" do
+      expect(iidx).to_not be_valid
+    end
+    it "PASELIの数値エラーメッセージが表示されること" do
+      iidx.valid?
+      expect(iidx.errors[:premium_free_price_to]).to include("は1000以下の値にしてください")
     end
   end
 

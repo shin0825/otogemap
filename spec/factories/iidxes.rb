@@ -5,7 +5,10 @@ FactoryBot.define do
     switch_weight { 0.01 }
     cash_price { 10 }
     paseli_availability { false }
-    paseli_price { 10 }
+    paseli_standard_price { 10 }
+    paseli_premium_price { 10 }
+    premium_free_price_from { 10 }
+    premium_free_price_to { 10 }
     premium_free_time_from { 1 }
     premium_free_time_to { 1 }
     association :amusement_arcade, factory: :amusement_arcade

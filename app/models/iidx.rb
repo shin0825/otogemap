@@ -2,6 +2,7 @@ class Iidx < ApplicationRecord
     belongs_to :amusement_arcade, optional: true
     belongs_to :iidx_machine, optional: true
     belongs_to :iidx_monitor, optional: true
+    belongs_to :iidx_version, optional: true
     has_many :iidx_machine_tags
     has_many :machine_tags, through: :iidx_machine_tags
     accepts_nested_attributes_for :machine_tags, allow_destroy: true
@@ -11,7 +12,10 @@ class Iidx < ApplicationRecord
     validates :switch_weight, numericality: { greater_than_or_equal_to: 0.00, less_than_or_equal_to: 1.00}, allow_nil: true
     validates :cash_price, numericality: { only_integer: true, greater_than_or_equal_to: 10, less_than_or_equal_to: 1000}, presence: true
     validates :paseli_availability, inclusion: { in: [true, false] }
-    validates :paseli_price, numericality: { only_integer: true, greater_than_or_equal_to: 10, less_than_or_equal_to: 1000 }, allow_nil: true
+    validates :paseli_standard_price, numericality: { only_integer: true, greater_than_or_equal_to: 10, less_than_or_equal_to: 1000 }, allow_nil: true
+    validates :paseli_premium_price, numericality: { only_integer: true, greater_than_or_equal_to: 10, less_than_or_equal_to: 1000 }, allow_nil: true
+    validates :premium_free_price_from, numericality: { only_integer: true, greater_than_or_equal_to: 10, less_than_or_equal_to: 1000 }, allow_nil: true
+    validates :premium_free_price_to, numericality: { only_integer: true, greater_than_or_equal_to: 10, less_than_or_equal_to: 1000 }, allow_nil: true
     validates :premium_free_time_from, numericality: { only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 99 }, allow_nil: true
     validates :premium_free_time_to, numericality: { only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 99 }, allow_nil: true
 
