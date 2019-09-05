@@ -8,6 +8,7 @@ class SearchesController < ApplicationController
       @iidx_monitor_id = params[:search][:iidx_monitor_id]
       @iidx_version_id = params[:search][:iidx_version_id]
       @serial_no = params[:search][:serial_no]
+      @key_words = params[:search][:key_words]
       @iidx = Iidx.search(params)
     else
       @iidx = Iidx.all

@@ -20,6 +20,7 @@ class Iidx < ApplicationRecord
     validates :premium_free_time_to, numericality: { only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 99 }, allow_nil: true
 
     def self.search(params)
+        keywords = params[:search][:key_words].strip.split(/[[:blank:]]+/)
         serial_no = params[:search][:serial_no]
         prefecture_id =  params[:search][:prefecture_id].present? ? params[:search][:prefecture_id] : 23 # TODO: magicnumber
         machine_tag_ids =  params[:search][:machine_tag_ids]
@@ -33,6 +34,14 @@ class Iidx < ApplicationRecord
             .then{|result|
                 if serial_no.present?
                     result.where("serial_no LIKE ?", "%#{serial_no}%")
+                else
+                    result
+                end
+            }
+            .then{|result|
+                if keywords.length > 0
+                    keyword_array = keywords.map {|val| "%#{val}%" }
+                    result.where("iidxes.name ILIKE ANY ( array[?] )", keyword_array)
                 else
                     result
                 end

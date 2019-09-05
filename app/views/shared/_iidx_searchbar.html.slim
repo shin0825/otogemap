@@ -15,8 +15,11 @@
           span
             = c.text
     p
+      | キーワード&nbsp;
+      = text_field(:search, :key_words, value: key_words, class: 'selectbox')
+    p
       | シリアルナンバー&nbsp;
-      = text_field(:search, :serial_no, value: @serial_no, class: 'selectbox')
+      = text_field(:search, :serial_no, value: serial_no, class: 'selectbox')
     p
       | 所在地&nbsp;
       = collection_select(:search, :prefecture_id, Prefecture.all.order(:id), :id, :name, { selected: prefecture_id }, { :class => 'selectbox' })
