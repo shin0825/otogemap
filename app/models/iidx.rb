@@ -25,6 +25,7 @@ class Iidx < ApplicationRecord
         machine_tag_ids =  params[:search][:machine_tag_ids]
         iidx_machine_id =  params[:search][:iidx_machine_id]
         iidx_monitor_id =  params[:search][:iidx_monitor_id]
+        iidx_version_id =  params[:search][:iidx_version_id]
 
         result = Iidx.all
             .joins(amusement_arcade: :prefecture)
@@ -56,6 +57,14 @@ class Iidx < ApplicationRecord
                 if iidx_monitor_id.present?
                     result.includes(:iidx_monitor)
                     .where(iidx_monitor_id: iidx_monitor_id)
+                else
+                    result
+                end
+            }
+            .then{|result|
+                if iidx_version_id.present?
+                    result.includes(:iidx_version)
+                    .where(iidx_version_id: iidx_version_id)
                 else
                     result
                 end

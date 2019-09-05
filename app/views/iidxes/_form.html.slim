@@ -29,9 +29,32 @@
           | 使用可能
       .box-context
         .box-context-title
+          = f.label :paseli_standard_price, 'スタンダードプレー料金'
+        .box-context-body
+          | ¥
+          = f.text_field :paseli_standard_price
+          | -
+      .box-context
+        .box-context-title
           = f.label :paseli_premium_price, 'プレミアムプレー料金'
         .box-context-body
+          | ¥
           = f.text_field :paseli_premium_price
+          | -
+      .box-context
+        .box-context-title
+          = f.label :premium_free_price_from, 'プレミアムフリー料金(From)'
+        .box-context-body
+          | ¥
+          = f.text_field :premium_free_price_from
+          | -
+      .box-context
+        .box-context-title
+          = f.label :premium_free_price_to, 'プレミアムフリー料金(To)'
+        .box-context-body
+          | ¥
+          = f.text_field :premium_free_price_to
+          | -
       .box-context
         .box-context-title
           = f.label :premium_free_time_from, 'プレミアムフリー分数(From)'
@@ -44,6 +67,11 @@
         .box-context-body
           = f.text_field :premium_free_time_to
           | 分
+      .box-context
+        .box-context-title
+          = f.label :iidx_version_id, 'バージョン'
+        .box-context-body
+          = f.collection_select(:iidx_version_id, IidxVersion.all.order(:id), :id, :name, {}, { :class => 'selectbox' })
       .box-context
         .box-context-title
           = f.label :iidx_machine_id, '筐体種類'
