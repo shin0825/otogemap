@@ -6,8 +6,6 @@
 .tags
   = form_with(url: amusement_arcades_result_path, method: :get, local: true) do
     p
-      | 検索条件：
-    p
       | 特徴&nbsp;
       = collection_check_boxes(:search, :shop_tag_ids, tags, :id, :name, include_hidden: false, checked: checked_shop_tag_ids) do |c|
         label.tag
@@ -20,6 +18,7 @@
     p
       | キーワード&nbsp;
       = text_field(:search, :key_words, value: key_words, class: 'selectbox')
+    br
     p
       #buttons
         = submit_tag '検索', class: "btn"

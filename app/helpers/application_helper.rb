@@ -1,6 +1,6 @@
 module ApplicationHelper
   def full_title(page_title = '')
-    base_title = "音ゲー全機種マップ"
+    base_title = "IIDX筐体DB"
     if page_title.empty?
       base_title
     else
