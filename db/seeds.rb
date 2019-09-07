@@ -47,6 +47,75 @@ Prefecture.create(:id => 44, :name => '大分県', :name_kana => 'オオイタ�
 Prefecture.create(:id => 45, :name => '宮崎県', :name_kana => 'ミヤザキケン')
 Prefecture.create(:id => 46, :name => '鹿児島県', :name_kana => 'カゴシマケン')
 Prefecture.create(:id => 47, :name => '沖縄県', :name_kana => 'オキナワケン')
+ShopTag.create(:id => 1, :name => 'トイレあり')
+ShopTag.create(:id => 2, :name => '禁煙')
+ShopTag.create(:id => 3, :name => '分煙')
+ShopTag.create(:id => 4, :name => '喫煙ルームあり')
+ShopTag.create(:id => 5, :name => '灰皿あり')
+ShopTag.create(:id => 6, :name => '荷物置き場あり')
+ShopTag.create(:id => 7, :name => 'コインロッカーあり')
+ShopTag.create(:id => 8, :name => '休憩スペースあり')
+ShopTag.create(:id => 9, :name => 'サービスデーあり')
+ShopTag.create(:id => 10, :name => '自販機あり')
+ShopTag.create(:id => 11, :name => '食事処あり')
+
+MachineTag.create(:id => 1, :name => '扇風機あり')
+MachineTag.create(:id => 2, :name => '充電器あり')
+MachineTag.create(:id => 3, :name => '荷物置き場あり')
+MachineTag.create(:id => 4, :name => '待ち椅子あり')
+MachineTag.create(:id => 5, :name => '台拭きあり')
+MachineTag.create(:id => 6, :name => '画面みやすい')
+MachineTag.create(:id => 7, :name => 'サービスデーあり')
+
+IidxMonitor.create(:id => 0, :name => '不明')
+IidxMonitor.create(:id => 1, :name => 'DJT液晶')
+IidxMonitor.create(:id => 2, :name => 'EMP液晶')
+IidxMonitor.create(:id => 3, :name => 'tricoro液晶')
+IidxMonitor.create(:id => 4, :name => 'SPADA液晶')
+IidxMonitor.create(:id => 5, :name => 'PENDUAL液晶')
+IidxMonitor.create(:id => 6, :name => 'CB液晶')
+IidxMonitor.create(:id => 98, :name => '非純正')
+IidxMonitor.create(:id => 99, :name => 'その他')
+
+IidxMachine.create(:id => 0, :name => '不明')
+IidxMachine.create(:id => 1, :name => '初代筐体')
+IidxMachine.create(:id => 2, :name => '10th筐体')
+IidxMachine.create(:id => 3, :name => 'DD筐体')
+IidxMachine.create(:id => 4, :name => 'GOLD筐体')
+IidxMachine.create(:id => 5, :name => 'RA筐体')
+IidxMachine.create(:id => 6, :name => 'tricoro筐体')
+IidxMachine.create(:id => 7, :name => 'SPADA筐体')
+IidxMachine.create(:id => 8, :name => 'copula筐体')
+
+IidxVersion.create(:id => 0, :name => '不明')
+IidxVersion.create(:id => 1, :name => '初代')
+IidxVersion.create(:id => 2, :name => 'Substream')
+IidxVersion.create(:id => 3, :name => '2nd')
+IidxVersion.create(:id => 4, :name => '3rd')
+IidxVersion.create(:id => 5, :name => '4th')
+IidxVersion.create(:id => 6, :name => '5th')
+IidxVersion.create(:id => 7, :name => '6th')
+IidxVersion.create(:id => 8, :name => '7th')
+IidxVersion.create(:id => 9, :name => '8th')
+IidxVersion.create(:id => 10, :name => '9th')
+IidxVersion.create(:id => 11, :name => '10th')
+IidxVersion.create(:id => 12, :name => '11 IIDXRED')
+IidxVersion.create(:id => 13, :name => '12 HAPPYSKY')
+IidxVersion.create(:id => 14, :name => '13 DistorteD')
+IidxVersion.create(:id => 15, :name => '14 GOLD')
+IidxVersion.create(:id => 16, :name => '15 DJTROOPERS')
+IidxVersion.create(:id => 17, :name => '16 EMPRESS')
+IidxVersion.create(:id => 18, :name => '17 SIRIUS')
+IidxVersion.create(:id => 19, :name => '18 ResortAnthem')
+IidxVersion.create(:id => 20, :name => '19 Lincle')
+IidxVersion.create(:id => 21, :name => '20 tricoro')
+IidxVersion.create(:id => 22, :name => '21 SPADA')
+IidxVersion.create(:id => 23, :name => '22 PENDUAL')
+IidxVersion.create(:id => 24, :name => '23 copula')
+IidxVersion.create(:id => 25, :name => '24 SINOBUZ')
+IidxVersion.create(:id => 26, :name => '25 CANNONBALLERS')
+IidxVersion.create(:id => 27, :name => '26 Rootage')
+IidxVersion.create(:id => 28, :name => '27 ')
 
 AmusementArcade.create(
   :name => "コムテックタワー",
@@ -58,11 +127,12 @@ AmusementArcade.create(
   :homepage_url => "https://comtechtower.web.fc2.com",
   :twitter_url => "https://twitter.com/ComtechTower"
 )
+
 AmusementArcade.create(
   :name => "名古屋レジャーランドささしま店",
   :name_kana => "なごやれじゃーらんどささしまてん",
   :prefecture_id => 23,
-  :address => "名古屋市中村区平池町4丁目60番14号マーケットスクエアささしま1階",
+  :address => "愛知県名古屋市中村区平池町4丁目60番14号マーケットスクエアささしま1階",
   :latitude => 35.162673,
   :longitude => 136.884998,
   :homepage_url => "https://www.leisurelan.co.jp/shop/sasasima.html",
@@ -155,72 +225,95 @@ AmusementArcade.create(
   :homepage_url => "http://www.korona.co.jp/game/nak/index.asp",
   :twitter_url => "https://twitter.com/nakagawametoro"
 )
-ShopTag.create(:id => 1, :name => 'トイレあり')
-ShopTag.create(:id => 2, :name => '禁煙')
-ShopTag.create(:id => 3, :name => '分煙')
-ShopTag.create(:id => 4, :name => '喫煙ルームあり')
-ShopTag.create(:id => 5, :name => '灰皿あり')
-ShopTag.create(:id => 6, :name => '荷物置き場あり')
-ShopTag.create(:id => 7, :name => 'コインロッカーあり')
-ShopTag.create(:id => 8, :name => '休憩スペースあり')
-ShopTag.create(:id => 9, :name => 'サービスデーあり')
-ShopTag.create(:id => 10, :name => '自販機あり')
-ShopTag.create(:id => 11, :name => '食事処あり')
 
-MachineTag.create(:id => 1, :name => '扇風機あり')
-MachineTag.create(:id => 2, :name => '充電器あり')
-MachineTag.create(:id => 3, :name => '荷物置き場あり')
-MachineTag.create(:id => 4, :name => '待ち椅子あり')
-MachineTag.create(:id => 5, :name => '台拭きあり')
-MachineTag.create(:id => 6, :name => '画面みやすい')
-MachineTag.create(:id => 7, :name => 'サービスデーあり')
-
-IidxMonitor.create(:id => 0, :name => '不明')
-IidxMonitor.create(:id => 1, :name => 'DJT液晶')
-IidxMonitor.create(:id => 2, :name => 'EMP液晶')
-IidxMonitor.create(:id => 3, :name => 'tricoro液晶')
-IidxMonitor.create(:id => 4, :name => 'SPADA液晶')
-IidxMonitor.create(:id => 5, :name => 'PENDUAL液晶')
-IidxMonitor.create(:id => 6, :name => 'CB液晶')
-IidxMonitor.create(:id => 98, :name => '非純正')
-IidxMonitor.create(:id => 99, :name => 'その他')
-
-IidxMachine.create(:id => 0, :name => '不明')
-IidxMachine.create(:id => 1, :name => '初代筐体')
-IidxMachine.create(:id => 2, :name => '10th筐体')
-IidxMachine.create(:id => 3, :name => 'DD筐体')
-IidxMachine.create(:id => 4, :name => 'GOLD筐体')
-IidxMachine.create(:id => 5, :name => 'RA筐体')
-IidxMachine.create(:id => 6, :name => 'tricoro筐体')
-IidxMachine.create(:id => 7, :name => 'SPADA筐体')
-IidxMachine.create(:id => 8, :name => 'copula筐体')
-
-IidxVersion.create(:id => 0, :name => '不明')
-IidxVersion.create(:id => 1, :name => '初代')
-IidxVersion.create(:id => 2, :name => 'Substream')
-IidxVersion.create(:id => 3, :name => '2nd')
-IidxVersion.create(:id => 4, :name => '3rd')
-IidxVersion.create(:id => 5, :name => '4th')
-IidxVersion.create(:id => 6, :name => '5th')
-IidxVersion.create(:id => 7, :name => '6th')
-IidxVersion.create(:id => 8, :name => '7th')
-IidxVersion.create(:id => 9, :name => '8th')
-IidxVersion.create(:id => 10, :name => '9th')
-IidxVersion.create(:id => 11, :name => '10th')
-IidxVersion.create(:id => 12, :name => '11 IIDXRED')
-IidxVersion.create(:id => 13, :name => '12 HAPPYSKY')
-IidxVersion.create(:id => 14, :name => '13 DistorteD')
-IidxVersion.create(:id => 15, :name => '14 GOLD')
-IidxVersion.create(:id => 16, :name => '15 DJTROOPERS')
-IidxVersion.create(:id => 17, :name => '16 EMPRESS')
-IidxVersion.create(:id => 18, :name => '17 SIRIUS')
-IidxVersion.create(:id => 19, :name => '18 ResortAnthem')
-IidxVersion.create(:id => 20, :name => '19 Lincle')
-IidxVersion.create(:id => 21, :name => '20 tricoro')
-IidxVersion.create(:id => 22, :name => '21 SPADA')
-IidxVersion.create(:id => 23, :name => '22 PENDUAL')
-IidxVersion.create(:id => 24, :name => '23 copula')
-IidxVersion.create(:id => 25, :name => '24 SINOBUZ')
-IidxVersion.create(:id => 26, :name => '25 CANNONBALLERS')
-IidxVersion.create(:id => 27, :name => '26 Rootage')
-IidxVersion.create(:id => 28, :name => '27 ')
+1.upto 11 do |no|
+  AmusementArcadeShopTag.create(
+    :amusement_arcade_id => no,
+    :shop_tag_id => 1,
+  )
+  AmusementArcadeShopTag.create(
+    :amusement_arcade_id => no,
+    :shop_tag_id => 10,
+  )
+  Iidx.create(
+      :name => "#{no} #1",
+      :cash_price => 100,
+      :paseli_standard_price => 103,
+      :paseli_premium_price => 124,
+      :premium_free_price_from => 150,
+      :premium_free_price_to => 210,
+      :premium_free_time_from => 6,
+      :premium_free_time_to => 10,
+      :spring_weight => 100,
+      :switch_weight => 1,
+      :paseli_availability => true,
+      :amusement_arcade_id => no,
+      :spring_is_found_value => false,
+      :switch_is_found_value => false,
+      :iidx_machine_id => 4,
+      :iidx_monitor_id => 1,
+      :iidx_version_id => 27,
+  )
+  IidxMachineTag.create(
+    :iidx_id => no*3-2,
+    :machine_tag_id => 3,
+  )
+  IidxMachineTag.create(
+    :iidx_id => no*3-2,
+    :machine_tag_id => 4,
+  )
+  Iidx.create(
+      :name => "#{no} #2",
+      :cash_price => 100,
+      :paseli_standard_price => 103,
+      :paseli_premium_price => 124,
+      :premium_free_price_from => 150,
+      :premium_free_price_to => 210,
+      :premium_free_time_from => 6,
+      :premium_free_time_to => 10,
+      :spring_weight => 100,
+      :switch_weight => 1,
+      :paseli_availability => true,
+      :amusement_arcade_id => no,
+      :spring_is_found_value => false,
+      :switch_is_found_value => false,
+      :iidx_machine_id => 4,
+      :iidx_monitor_id => 1,
+      :iidx_version_id => 27,
+  )
+  IidxMachineTag.create(
+    :iidx_id => no*3-1,
+    :machine_tag_id => 3,
+  )
+  IidxMachineTag.create(
+    :iidx_id => no*3-1,
+    :machine_tag_id => 4,
+  )
+  Iidx.create(
+      :name => "#{no} #3",
+      :cash_price => 100,
+      :paseli_standard_price => 103,
+      :paseli_premium_price => 124,
+      :premium_free_price_from => 150,
+      :premium_free_price_to => 210,
+      :premium_free_time_from => 6,
+      :premium_free_time_to => 10,
+      :spring_weight => 100,
+      :switch_weight => 1,
+      :paseli_availability => true,
+      :amusement_arcade_id => no,
+      :spring_is_found_value => false,
+      :switch_is_found_value => false,
+      :iidx_machine_id => 4,
+      :iidx_monitor_id => 1,
+      :iidx_version_id => 27,
+  )
+  IidxMachineTag.create(
+    :iidx_id => no*3,
+    :machine_tag_id => 3,
+  )
+  IidxMachineTag.create(
+    :iidx_id => no*3,
+    :machine_tag_id => 4,
+  )
+end
