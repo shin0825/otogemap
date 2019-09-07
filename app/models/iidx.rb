@@ -3,7 +3,7 @@ class Iidx < ApplicationRecord
     belongs_to :iidx_machine, optional: true
     belongs_to :iidx_monitor, optional: true
     belongs_to :iidx_version, optional: true
-    has_many :iidx_machine_tags
+    has_many :iidx_machine_tags, dependent: :destroy
     has_many :machine_tags, through: :iidx_machine_tags
     accepts_nested_attributes_for :machine_tags, allow_destroy: true
 

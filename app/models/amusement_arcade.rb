@@ -1,7 +1,7 @@
 class AmusementArcade < ApplicationRecord
   belongs_to :prefecture, optional: true
-  has_many :iidx, :dependent => :nullify
-  has_many :amusement_arcade_shop_tags
+  has_many :iidx, dependent: :nullify
+  has_many :amusement_arcade_shop_tags, dependent: :destroy
   has_many :shop_tags, through: :amusement_arcade_shop_tags
   accepts_nested_attributes_for :shop_tags, allow_destroy: true
 
