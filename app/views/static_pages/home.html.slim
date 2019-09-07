@@ -1,3 +1,13 @@
+.yokoso
+  = icon 'fas', 'compact-disc'
+  | IIDX筐体DB
+  = icon 'fas', 'compact-disc'
+.yokoso-memo
+  p
+    | ゲームセンターの情報と、そのゲームセンターの中にある「beatmania IIDX」の筐体の情報をまとめたサイトです。
+  p.caution
+    | 個人的なサイトですので、データは確実ではありません。適当です。
+
 = render partial: 'shared/arcade_searchbar' ,   locals: { tags: ShopTag.all, checked_shop_tag_ids: [] , prefecture_id: 23, key_words: ''}
 br
 = render partial: 'shared/iidx_searchbar' , locals: { tags: MachineTag.all, checked_machine_tag_ids: [], prefecture_id: 23, iidx_machine_id: nil, iidx_monitor_id: nil, iidx_version_id: nil, key_words: '', serial_no: '' }
