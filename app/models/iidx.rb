@@ -22,6 +22,8 @@ class Iidx < ApplicationRecord
     def self.search(params)
         keywords = params[:search][:key_words].strip.split(/[[:blank:]]+/)
         serial_no = params[:search][:serial_no]
+        switch_weight = number?(params[:search][:switch]) ? params[:search][:switch] : nil
+        spring_weight = number?(params[:search][:spring]) ? params[:search][:spring] : nil
         prefecture_id =  params[:search][:prefecture_id].present? ? params[:search][:prefecture_id] : 23 # TODO: magicnumber
         machine_tag_ids =  params[:search][:machine_tag_ids]
         iidx_machine_id =  params[:search][:iidx_machine_id]
@@ -78,6 +80,24 @@ class Iidx < ApplicationRecord
                     result
                 end
             }
+            .then{|result|
+                if switch_weight.present?
+                    result.where("abs(switch_weight - ?) <= 0.09", switch_weight) #差分の絶対値が0.05以内のものを検索　近似値的な
+                else
+                    result
+                end
+            }
+            .then{|result|
+                if spring_weight.present?
+                    result.where("abs(spring_weight - ?) <= 9", spring_weight) #差分の絶対値が5以内のものを検索　近似値的な
+                else
+                    result
+                end
+            }
         result
+    end
+
+    def self.number?(str)
+        str =~ /\A-?\d+(.\d+)?\Z/
     end
 end

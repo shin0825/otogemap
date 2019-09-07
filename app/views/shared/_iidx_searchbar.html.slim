@@ -24,6 +24,14 @@
       - else
         = text_field(:search, :serial_no, class: 'selectbox')
     p
+      | バネ(±9g)&nbsp;
+      - spring = nil unless local_assigns[:spring]
+      = number_field(:search, :spring, value: spring, class: 'selectbox', max: 100, min: 0, :step => 1)
+    p
+      | スイッチ(±0.09N)&nbsp;
+      - switch = nil unless local_assigns[:switch]
+      = number_field(:search, :switch, value: switch, class: 'selectbox', max: 1, min: 0, :step => 0.05)
+    p
       | 所在地&nbsp;
       = collection_select(:search, :prefecture_id, Prefecture.all.order(:id), :id, :name, { selected: prefecture_id }, { :class => 'selectbox' })
     p

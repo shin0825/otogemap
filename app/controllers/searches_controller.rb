@@ -9,6 +9,8 @@ class SearchesController < ApplicationController
       @iidx_version_id = params[:search][:iidx_version_id]
       @serial_no = params[:search][:serial_no]
       @key_words = params[:search][:key_words]
+      @switch = params[:search][:switch]
+      @spring = params[:search][:spring]
       @iidx = Iidx.search(params)
     else
       @iidx = Iidx.all
