@@ -45,7 +45,7 @@ h4.tags
     - if @iidx.paseli_availability
       .box-context
         .box-context-title
-          | パセリ
+          | PASELI
         .box-context-body
           | ¥
           = @iidx.paseli_standard_price
@@ -61,13 +61,15 @@ h4.tags
             = @iidx.premium_free_time_from
             | 分&nbsp;¥
             = @iidx.premium_free_price_from
-            | -&nbsp;〜&nbsp;
+            | -
+            br
+            | 〜&nbsp;
             = @iidx.premium_free_time_to
             | 分&nbsp;¥
             = @iidx.premium_free_price_to
             | -
           - else
-            | なし
+            | 不明
     - else
       .box-context
         .box-context-title
@@ -131,4 +133,4 @@ h4.tags
     | 設置店舗
 = render partial: 'shared/arcade', locals: { arcade: @arcade }
 
-= render partial: 'shared/iidx_searchbar' , locals: { tags: @tags, checked_machine_tag_ids: [], prefecture_id: nil, iidx_machine_id: nil, iidx_monitor_id: nil, iidx_version_id: nil, key_words: @key_words }
+= render partial: 'shared/iidx_searchbar' , locals: { tags: @tags, checked_machine_tag_ids: [], prefecture_id: @iidx.amusement_arcade.prefecture_id, iidx_machine_id: nil, iidx_monitor_id: nil, iidx_version_id: nil, key_words: @key_words }

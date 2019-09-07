@@ -12,13 +12,13 @@
           = c.check_box
           span
             = c.text
-    p
-      | 所在地&nbsp;
-      = collection_select(:search, :prefecture_id, Prefecture.all.order(:id), :id, :name, {selected: prefecture_id }, { :class => 'selectbox' })
-    p
-      | キーワード&nbsp;
-      = text_field(:search, :key_words, value: key_words, class: 'selectbox')
-    br
+    .l-flex-wrap
+      p.search-block
+        | 所在地&nbsp;
+        = collection_select(:search, :prefecture_id, Prefecture.all.order(:id), :id, :name, {selected: prefecture_id }, { :class => 'selectbox' })
+      p.search-block
+        | キーワード&nbsp;
+        = text_field(:search, :key_words, value: key_words, class: 'selectbox')
     p
       #buttons
         = submit_tag '検索', class: "btn"

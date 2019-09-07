@@ -1,5 +1,6 @@
 $main-color: #3C2F41;
 $title-bg-color: #94719B;
+$button-color: #f1f1f1;
 
 @mixin text-color($color: #000) {
   color: $color;
@@ -98,7 +99,7 @@ a {
     margin: auto 1 auto 0;
     padding: 1rem .5rem 0 .5rem;
     border-radius: .5rem .5rem .5rem .5rem;
-    background-color: #FFF;
+    background-color: $button-color;
     padding: .5rem 1rem .5rem 1rem;
     font-size: 1.5rem;
     text-align: center;
@@ -133,7 +134,7 @@ a {
     color: #515151;
     border-radius: 4px;
     padding: .5rem 1rem .5rem 1rem;
-    margin: 0 .5rem .5rem 0;
+    margin: .25rem;
     cursor: pointer;
     display: inline-block;
     position: relative;
@@ -163,7 +164,7 @@ a {
 }
 
 .tag span {
-  background-color: #f1f1f1;
+  background-color: $button-color;
   color: #515151;
   border-radius: 4px;
   padding: .5rem 2rem .5rem 2rem;
@@ -180,7 +181,7 @@ a {
 
 .tag input[type="checkbox"]:checked+span {
   background-color: #77428D;
-  color: #f1f1f1;
+  color: $button-color;
 }
 
 .contentBox {
@@ -266,4 +267,9 @@ ul.pagination li.active {
   a {
     @include link-color($main-color);
   }
+}
+
+p.search-block {
+  padding: .25rem;
+  margin-right: 1rem;
 }
