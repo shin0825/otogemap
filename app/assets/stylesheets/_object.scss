@@ -245,25 +245,21 @@ ul.pagination {
   width: 100%;
   text-align: center;
 }
+
 ul.pagination li {
-  display: inline;
+  display: inline-block;
   background-color: #FFF;
   padding: 1rem 1.5rem;
   text-decoration: none;
   border-radius: .5rem;
-
+  margin-bottom: .5rem;
   a {
     @include link-color($main-color);
   }
 }
 
 ul.pagination li.active {
-  display: inline;
   background-color: $title-bg-color;
-  padding: 1rem 1.5rem;
-  text-decoration: none;
-  border-radius: .5rem;
-
   a {
     @include link-color($main-color);
   }
