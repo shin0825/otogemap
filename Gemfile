@@ -77,6 +77,7 @@ group :development do
   gem 'faker',          '>= 1.7.3'
   gem 'rubocop', require: false
   gem 'rubocop-rails'
+  gem 'wdm', '>= 0.1.0' 
 end
 
 #group :production do
@@ -85,4 +86,6 @@ gem 'pg', '1.5.3'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-gem 'wdm', '>= 0.1.0' 
+gem "dockerfile-rails", ">= 1.2", :group => :development
+
+gem "redis", "~> 5.0"
